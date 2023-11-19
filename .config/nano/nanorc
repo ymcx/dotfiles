@@ -1,0 +1,19 @@
+set zap
+set zero
+set tabsize             4
+set boldtext
+set smarthome
+set autoindent
+set positionlog
+set spotlightcolor      bold,#FFF,#069
+set selectedcolor       bold,#FFF,#069
+set functioncolor       bold,white
+set scrollercolor       bold,white
+set statuscolor         bold,white
+set numbercolor         bold,white
+set promptcolor         bold,white
+set stripecolor         bold,white
+set titlecolor          bold,white
+set errorcolor          bold,lightred
+set minicolor           bold,white
+set keycolor            bold,white

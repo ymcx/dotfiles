@@ -1,0 +1,18 @@
+"\C-k": kill-whole-line
+
+set mark-symlinked-directories on
+set completion-ignore-case on
+set show-all-if-unmodified on
+set history-preserve-point on
+set enable-bracketed-paste on
+set completion-query-items 0
+set show-all-if-ambiguous on
+set skip-completed-text on
+set completion-map-case on
+set page-completions off
+set colored-stats on
+set convert-meta off
+set bell-style none
+set output-meta on
+set input-meta on
+set meta-flag on

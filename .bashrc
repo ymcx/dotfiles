@@ -39,12 +39,10 @@ bind '"\C-n":"\C-kcd ..\C-m"'
 HISTCONTROL="erasedups:ignoreboth"
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
-export NNN_TRASH=2
 export ANDROID_HOME=/home/user/.android
 export HISTFILE=/home/user/.cache/bash/bash_history
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/11.0/bin
 export LESS="-g -i -R -S -z-4 -F -K -r --use-color -x4"
-export __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json
 
 alias up="f DNF && sudo dnf distro-sync -y && f Flatpak && flatpak update -y && f fwupd && sudo fwupdmgr update -y"
 alias ls="ls --color=always -XNAh --group-directories-first --time-style=+'%d.%m.%Y %H:%M'"
@@ -62,41 +60,26 @@ alias cp="cp -ri"
 alias df="df -h"
 alias dnf="dnf5"
 
-alias va="NVIM_APPNAME=nvim-chad nvim"
-alias vs="NVIM_APPNAME=nvim-astr nvim"
-alias vh="NVIM_APPNAME=nvim-lazy nvim"
-alias vt="lvim"
-alias vg="nvim"
-
-nnn ()
-{
-    # Block nesting of nnn in subshells
-    [ "${NNNLVL:-0}" -eq 0 ] || {
-        echo "nnn is already running"
-        return
-    }
-
-    # The behaviour is set to cd on quit (nnn checks if NNN_TMPFILE is set)
-    # If NNN_TMPFILE is set to a custom path, it must be exported for nnn to
-    # see. To cd on quit only on ^G, remove the "export" and make sure not to
-    # use a custom path, i.e. set NNN_TMPFILE *exactly* as follows:
-    #      NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-
-    # Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
-    # stty start undef
-    # stty stop undef
-    # stty lwrap undef
-    # stty lnext undef
-
-    # The command builtin allows one to alias nnn to n, if desired, without
-    # making an infinitely recursive alias
-    command nnn "$@"
-
-    [ ! -f "$NNN_TMPFILE" ] || {
-        . "$NNN_TMPFILE"
-        rm -f "$NNN_TMPFILE" > /dev/null
-    }
+nnn() {
+	export NNN_TRASH=2
+	export NNN_TMPFILE="/home/user/.config/nnn/.lastd"
+	command nnn "$@"
+	. "$NNN_TMPFILE"
 }
+
+f() {
+	echo $''$3$'\e[2;'$C$'m'$2$'['$3$'\e[m'$2$''$3$'\e[1;'$C$'m'$2$''$1$''$3$'\e[m'$2$''$3$'\e[2;'$C$'m'$2$']'$3$'\e[m'$2$' '
+}
+B=(92 93 94 96 91 95)
+if [[ $(who am i) =~ \([-a-zA-Z0-9\.]+\)$ ]]; then
+	export C=${B[5]}
+elif [ $USER == "root" ]; then
+	export C=${B[4]}
+else
+	C=${B[RANDOM%4]}
+fi
+PS1=$(f "\w" "\]" "\[")
+PS2=$(f ">" "\]" "\[")
+export SUDO_PROMPT=$(f "p")
 
 # CUSTOM END

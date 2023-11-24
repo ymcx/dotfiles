@@ -1,13 +1,15 @@
 local wezterm = require 'wezterm'
 local config = {}
 
+-- local gpus = wezterm.gui.enumerate_gpus()
+-- config.webgpu_preferred_adapter = gpus[2]
+
 config.window_close_confirmation = 'NeverPrompt'
 config.adjust_window_size_when_changing_font_size = false
-config.line_height = 1.025
 config.font_size = 13
 config.check_for_updates = false
 config.audible_bell = 'Disabled'
-config.default_cursor_style = 'BlinkingUnderline'
+config.default_cursor_style = 'SteadyBar'
 config.cursor_blink_ease_in = 'Constant'
 config.cursor_blink_ease_out = 'Constant'
 config.cursor_blink_rate = 600
@@ -15,10 +17,7 @@ config.detect_password_input = false
 config.force_reverse_video_cursor = true
 config.hide_mouse_cursor_when_typing = false
 config.show_new_tab_button_in_tab_bar = false
--- config.enable_tab_bar = false
 config.show_tab_index_in_tab_bar = false
--- config.term = 'wezterm'
--- config.unicode_version = 16
 config.window_decorations = 'RESIZE'
 config.font = wezterm.font 'JetBrains Mono'
 
@@ -42,7 +41,7 @@ local function get_appearance()
 end
 
 local function scheme_for_appearance(appearance)
-  if appearance:find 'Light' then 
+  if appearance:find 'Light' then
     config.window_frame = {
       active_titlebar_bg = '#ffffff',
       inactive_titlebar_bg = '#ffffff'

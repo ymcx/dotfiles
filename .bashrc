@@ -39,6 +39,8 @@ bind '"\C-n":"\C-kcd ..\C-m"'
 HISTCONTROL="erasedups:ignoreboth"
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
+export VISUAL=nvim
+export EDITOR=nvim
 export ANDROID_HOME=/home/user/.android
 export HISTFILE=/home/user/.cache/bash/bash_history
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/11.0/bin

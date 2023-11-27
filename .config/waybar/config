@@ -2,24 +2,65 @@
   "height": 32,
   "layer": "top",
   "position": "top",
+  "modules-left": ["hyprland/workspaces"],
   "modules-center": ["clock"],
-  "modules-right": ["pulseaudio", "battery"],
+  "modules-right": ["network", "bluetooth", "pulseaudio", "battery"],
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "default": "󰚍",
+      "active": "󰚍󰚍󰚍󰚍󰚍"
+    }
+  },
+
+  "network": {
+    "format": "{icon}",
+    "format-disconnected": "󰤮",
+    "format-icons": {
+      "default": ["󰤯","󰤟","󰤢","󰤥","󰤨"]
+    },
+    "on-click": "rfkill toggle wifi",
+    "tooltip-format": "{essid}\n{ipaddr}"
+  },
+
+  "bluetooth": {
+    "format": "󰂯",
+    "format-off": "󰂲",
+    "on-click": "/home/user/.local/share/bluetooth.sh",
+    "tooltip-format-connected": "{device_alias}"
+  },
 
   "clock": {
-    "format": "{:%H:%M}"
+    "format": "{:%R}",
+    "tooltip": true,
+    "tooltip-format": "{:%A %d.%m.%Y}"
   },
 
   "pulseaudio": {
-    "format": "{icon}",
-    "format-icons": {
-      "default": ["󰝟","󰕿","󰕿","󰕿","󰕿","󰕿","󰕿","󰕿","󰕿","󰕿","󰕿","󰕿","󰖀","󰖀","󰖀","󰖀","󰖀","󰖀","󰖀","󰖀","󰖀","󰖀","󰖀","󰕾","󰕾","󰕾","󰕾","󰕾","󰕾","󰕾","󰕾","󰕾","󰕾","󰕾"]
-    }
+    "format-0": "󰸈",
+    "format-1": "󰕿",
+    "format-2": "󰖀",
+    "format-3": "󰕾",
+    "states": {
+        "0": 0,
+        "1": 47,
+        "2": 94,
+        "3": 141
+    },
+    "on-scroll-up": "",
+    "on-scroll-down": ""
   },
 
   "battery": {
-    "format": "{icon} ",
+    "format": "{icon}",
     "format-icons": {
-      "default": ["󰂎","󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"]
-    }
+      "default": ["󰂎","󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"],
+      "charging": ["󰢟","󰢜","󰂆","󰂇","󰂈","󰢝","󰂉","󰢞","󰂊","󰂋","󰂅"]
+    },
+    "states": {
+      "critical": 20
+    },
+    "tooltip-format": "{capacity}%"
   }
 }

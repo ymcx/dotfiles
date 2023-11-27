@@ -2,8 +2,8 @@
   background-color: #1e1e1e;
   font-family: Cantarell;
   font-size: 13;
-	box-shadow: none;
-	border: 0px;
+  box-shadow: none;
+  border: 0px;
   margin: 4px;
 }
 
@@ -12,5 +12,5 @@
 }
 
 #outer-box {
-	border: 1px solid #2e2e2e;
+  border: 1px solid #2e2e2e;
 }

@@ -4,7 +4,7 @@
   "position": "top",
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["clock"],
-  "modules-right": ["network", "bluetooth", "pulseaudio", "battery"],
+  "modules-right": ["hyprland/language", "network", "bluetooth", "pulseaudio", "battery"],
 
   "hyprland/workspaces": {
     "format": "{icon}",
@@ -12,6 +12,16 @@
       "default": "󰚍",
       "active": "󰚍󰚍󰚍󰚍󰚍"
     }
+  },
+
+  "clock": {
+    "format": "{:%R}",
+    "tooltip": true,
+    "tooltip-format": "{:%A %d.%m.%Y}"
+  },
+
+  "hyprland/language": {
+    "format": "{shortDescription}"
   },
 
   "network": {
@@ -31,22 +41,11 @@
     "tooltip-format-connected": "{device_alias}"
   },
 
-  "clock": {
-    "format": "{:%R}",
-    "tooltip": true,
-    "tooltip-format": "{:%A %d.%m.%Y}"
-  },
-
   "pulseaudio": {
-    "format-0": "󰸈",
-    "format-1": "󰕿",
-    "format-2": "󰖀",
-    "format-3": "󰕾",
-    "states": {
-        "0": 0,
-        "1": 47,
-        "2": 94,
-        "3": 141
+    "format": "{icon}",
+    "format-muted": "󰝟",
+    "format-icons": {
+      "default": ["󰸈","󰕿","󰕿","󰕿","󰕿","󰕿","󰕿","󰕿","󰖀","󰖀","󰖀","󰖀","󰖀","󰖀","󰖀","󰕾","󰕾","󰕾","󰕾","󰕾","󰕾"]
     },
     "on-scroll-up": "",
     "on-scroll-down": ""

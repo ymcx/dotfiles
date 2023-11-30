@@ -21,7 +21,8 @@
   },
 
   "hyprland/language": {
-    "format": "{shortDescription}"
+    "format": "{shortDescription}",
+    "on-click-release": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
   },
 
   "network": {
@@ -30,14 +31,16 @@
     "format-icons": {
       "default": ["󰤯","󰤟","󰤢","󰤥","󰤨"]
     },
-    "on-click": "rfkill toggle wifi",
+    "on-click-release": "rfkill toggle wifi",
+    "on-click-right-release": "wezterm start bash -c 'networkctl && bash'",
     "tooltip-format": "{essid}\n{ipaddr}"
   },
 
   "bluetooth": {
     "format": "󰂯",
     "format-off": "󰂲",
-    "on-click": "/home/user/.local/share/bluetooth.sh",
+    "on-click-release": "/home/user/.local/share/bluetooth.sh",
+    "on-click-right-release": "wezterm start bluetoothctl",
     "tooltip-format-connected": "{device_alias}"
   },
 
@@ -47,8 +50,8 @@
     "format-icons": {
       "default": ["󰸈","󰕿","󰕿","󰕿","󰕿","󰕿","󰕿","󰕿","󰖀","󰖀","󰖀","󰖀","󰖀","󰖀","󰖀","󰕾","󰕾","󰕾","󰕾","󰕾","󰕾"]
     },
-    "on-scroll-up": "",
-    "on-scroll-down": ""
+    "on-click-release": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-click-right-release": "wezterm start bash -c 'amixer && bash'"
   },
 
   "battery": {
@@ -58,7 +61,7 @@
       "charging": ["󰢟","󰢜","󰂆","󰂇","󰂈","󰢝","󰂉","󰢞","󰂊","󰂋","󰂅"]
     },
     "states": {
-      "critical": 20
+      "critical": 10
     },
     "tooltip-format": "{capacity}%"
   }

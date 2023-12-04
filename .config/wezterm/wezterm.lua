@@ -4,27 +4,25 @@ local config = {}
 -- local gpus = wezterm.gui.enumerate_gpus()
 -- config.webgpu_preferred_adapter = gpus[2]
 
-config.window_close_confirmation = 'NeverPrompt'
+-- config.window_close_confirmation = 'NeverPrompt'
+-- config.default_cursor_style = 'SteadyBlock'
+-- config.cursor_blink_ease_in = 'Constant'
+-- config.cursor_blink_ease_out = 'Constant'
+-- config.cursor_blink_rate = 600
+-- config.detect_password_input = false
+
+config.show_new_tab_button_in_tab_bar = false
+config.tab_max_width = 23
+config.use_fancy_tab_bar = false
 config.adjust_window_size_when_changing_font_size = false
 config.font_size = 13
 config.check_for_updates = false
 config.audible_bell = 'Disabled'
-config.default_cursor_style = 'SteadyBar'
-config.cursor_blink_ease_in = 'Constant'
-config.cursor_blink_ease_out = 'Constant'
-config.cursor_blink_rate = 600
-config.detect_password_input = false
 config.force_reverse_video_cursor = true
 config.hide_mouse_cursor_when_typing = false
-config.show_new_tab_button_in_tab_bar = false
 config.show_tab_index_in_tab_bar = false
 config.window_decorations = 'RESIZE'
 config.font = wezterm.font 'JetBrains Mono'
-
-config.window_frame = {
-  font = wezterm.font 'Cantarell',
-  font_size = 11
-}
 
 config.window_padding = {
   left = 6,

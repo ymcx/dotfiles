@@ -50,6 +50,7 @@
     "format-icons": {
       "default": ["󰸈","󰕿","󰕿","󰕿","󰕿","󰕿","󰕿","󰕿","󰖀","󰖀","󰖀","󰖀","󰖀","󰖀","󰖀","󰕾","󰕾","󰕾","󰕾","󰕾","󰕾"]
     },
+    "tooltip-format": "{desc}\n{volume}%",
     "on-click-release": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "on-click-right-release": "wezterm start bash -c 'amixer && bash'"
   },

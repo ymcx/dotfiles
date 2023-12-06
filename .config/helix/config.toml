@@ -1,0 +1,64 @@
+theme = "adwaita-dark" #fleet_dark adwaita-dark rasmus
+
+[keys.insert]
+C-s = ":w"
+C-q = ":q!"
+S-tab = "unindent"
+C-right = "move_next_word_start"
+C-left = "move_prev_word_end"
+
+[keys.normal]
+C-s = ":w"
+C-q = ":q!"
+tab = "goto_next_buffer"
+S-tab = "goto_previous_buffer"
+A-x = "extend_to_line_bounds"
+X = ["extend_line_up", "extend_to_line_bounds"]
+C-right = "move_next_word_start"
+C-left = "move_prev_word_end"
+
+[keys.select]
+C-s = ":w"
+C-q = ":q!"
+tab = "goto_next_buffer"
+S-tab = "goto_previous_buffer"
+A-x = "extend_to_line_bounds"
+X = ["extend_line_up", "extend_to_line_bounds"]
+C-right = "move_next_word_start"
+C-left = "move_prev_word_end"
+
+[editor.statusline]
+left = ["mode", "file-base-name", "file-modification-indicator"]
+right = ["position"]
+mode.normal = ""
+mode.insert = ""
+mode.select = ""
+
+[editor.file-picker]
+hidden = false
+follow-symlinks = false
+
+[editor.indent-guides]
+render = true
+character = "⸽"
+
+[editor]
+auto-completion = false
+line-number = "relative"
+scroll-lines = 1
+color-modes	= true
+bufferline = "multiple"
+scrolloff = 0
+idle-timeout = 0
+completion-trigger-len = 1
+completion-replace = true
+
+[editor.cursor-shape]
+insert = "bar"
+select = "underline"
+
+[editor.search]
+wrap-around = false
+
+[editor.gutters]
+layout = ["diff", "diagnostics", "line-numbers", "spacer", "spacer"]

@@ -33,14 +33,16 @@ shopt -s nocaseglob
 shopt -s autocd
 shopt -s globstar
 
-bind -x '"\C-e":"ls"'
-bind '"\C-n":"\C-kcd ..\C-m"'
+bind -x '"\C-s":"ls"'
+bind '"\C-x":"\C-kcd ..\C-m"'
 
 HISTCONTROL="erasedups:ignoreboth"
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
-export VISUAL=nvim
-export EDITOR=nvim
+export NNN_TRASH=2
+export NNN_TMPFILE="/home/user/.config/nnn/.lastd"
+export VISUAL=hx
+export EDITOR=hx
 export ANDROID_HOME=/home/user/.android
 export HISTFILE=/home/user/.cache/bash/bash_history
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/11.0/bin
@@ -63,8 +65,6 @@ alias df="df -h"
 alias dnf="dnf5"
 
 nnn() {
-	export NNN_TRASH=2
-	export NNN_TMPFILE="/home/user/.config/nnn/.lastd"
 	command nnn "$@"
 	. "$NNN_TMPFILE"
 }

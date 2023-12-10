@@ -1,31 +1,25 @@
-theme = "adwaita-dark" #fleet_dark adwaita-dark rasmus
+theme = "gnome" #fleet_dark adwaita-dark rasmus
 
 [keys.insert]
-C-s = ":w"
-C-q = ":q!"
 S-tab = "unindent"
 C-right = "move_next_word_start"
-C-left = "move_prev_word_end"
+C-left = "move_prev_word_start"
 
 [keys.normal]
-C-s = ":w"
+C-s = ":w!"
+C-w = ":bc!"
 C-q = ":q!"
-tab = "goto_next_buffer"
-S-tab = "goto_previous_buffer"
-A-x = "extend_to_line_bounds"
-X = ["extend_line_up", "extend_to_line_bounds"]
+S-tab = "goto_next_buffer"
+A-X = "extend_to_line_bounds"
+X = "extend_line_up"
 C-right = "move_next_word_start"
-C-left = "move_prev_word_end"
+C-left = "move_prev_word_start"
 
 [keys.select]
-C-s = ":w"
-C-q = ":q!"
-tab = "goto_next_buffer"
-S-tab = "goto_previous_buffer"
-A-x = "extend_to_line_bounds"
-X = ["extend_line_up", "extend_to_line_bounds"]
+A-X = "extend_to_line_bounds"
+X = "extend_line_up"
 C-right = "move_next_word_start"
-C-left = "move_prev_word_end"
+C-left = "move_prev_word_start"
 
 [editor.statusline]
 left = ["mode", "file-base-name", "file-modification-indicator"]
@@ -43,7 +37,6 @@ render = true
 character = "⸽"
 
 [editor]
-auto-completion = false
 line-number = "relative"
 scroll-lines = 1
 color-modes	= true
@@ -55,7 +48,6 @@ completion-replace = true
 
 [editor.cursor-shape]
 insert = "bar"
-select = "underline"
 
 [editor.search]
 wrap-around = false

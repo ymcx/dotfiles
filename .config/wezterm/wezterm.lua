@@ -47,6 +47,7 @@ local function scheme_for_appearance(appearance)
     config.colors = {
       tab_bar = {
         inactive_tab_edge = '#ffffff',
+        background = '#ffffff',
         active_tab = {
           bg_color = '#ebebeb',
           fg_color = '#000000'
@@ -102,6 +103,7 @@ local function scheme_for_appearance(appearance)
     config.colors = {
       tab_bar = {
         inactive_tab_edge = '#303030',
+        background = '#303030',
         active_tab = {
           bg_color = '#444444',
           fg_color = '#ffffff'

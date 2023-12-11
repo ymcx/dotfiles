@@ -4,13 +4,8 @@ local config = {}
 -- local gpus = wezterm.gui.enumerate_gpus()
 -- config.webgpu_preferred_adapter = gpus[2]
 
--- config.window_close_confirmation = 'NeverPrompt'
--- config.default_cursor_style = 'SteadyBlock'
--- config.cursor_blink_ease_in = 'Constant'
--- config.cursor_blink_ease_out = 'Constant'
--- config.cursor_blink_rate = 600
--- config.detect_password_input = false
-
+config.window_close_confirmation = 'NeverPrompt'
+config.default_cursor_style = 'SteadyBar'
 config.show_new_tab_button_in_tab_bar = false
 config.tab_max_width = 23
 config.use_fancy_tab_bar = false
@@ -18,62 +13,43 @@ config.adjust_window_size_when_changing_font_size = false
 config.font_size = 13
 config.check_for_updates = false
 config.audible_bell = 'Disabled'
-config.force_reverse_video_cursor = true
 config.hide_mouse_cursor_when_typing = false
 config.show_tab_index_in_tab_bar = false
 config.window_decorations = 'RESIZE'
 config.font = wezterm.font 'JetBrains Mono'
 
 config.window_padding = {
-  left = 6,
-  right = 6,
-  top = 2,
-  bottom = 2
+  left = 0,
+  right = 0,
+  top = 0,
+  bottom = 0
 }
 
-local function get_appearance()
-  if wezterm.gui then
-    return wezterm.gui.get_appearance()
-  end
-  return 'Dark'
-end
-
-local function scheme_for_appearance(appearance)
-  if appearance:find 'Light' then
-    config.window_frame = {
-      active_titlebar_bg = '#ffffff',
-      inactive_titlebar_bg = '#ffffff'
-    }
-    config.colors = {
+wezterm.on('update-status', function(window, pane)
+  local overrides = window:get_config_overrides() or {}
+  if window:is_focused() then
+    overrides.colors = {
       tab_bar = {
-        inactive_tab_edge = '#ffffff',
-        background = '#ffffff',
+        background = '#303030',
         active_tab = {
-          bg_color = '#ebebeb',
-          fg_color = '#000000'
+          bg_color = '#444444',
+          fg_color = '#deddda'
         },
         inactive_tab = {
-          bg_color = '#ffffff',
-          fg_color = '#000000'
+          bg_color = '#303030',
+          fg_color = '#deddda'
         },
         inactive_tab_hover = {
-          bg_color = '#f1f1f1',
-          fg_color = '#000000'
-        },
-        new_tab = {
-          bg_color = '#ffffff',
-          fg_color = '#000000'
-        },
-        new_tab_hover = {
-          bg_color = '#f1f1f1',
-          fg_color = '#000000'
+          bg_color = '#303030',
+          fg_color = '#deddda'
         }
       },
-      foreground = '#000000',
-      background = '#ffffff',
-      cursor_border = '#000000',
-      selection_bg = '#000000',
-      selection_fg = '#ffffff',
+      foreground = '#deddda',
+      background = '#1d1d1d',
+      cursor_border = '#9a9996',
+      cursor_bg = '#9a9996',
+      cursor_fg = '#1d1d1d',
+      selection_bg = '#193d66',
       ansi = {
         '#241f31',
         '#c01c28',
@@ -96,40 +72,28 @@ local function scheme_for_appearance(appearance)
       }
     }
   else
-    config.window_frame = {
-      active_titlebar_bg = '#303030',
-      inactive_titlebar_bg = '#303030'
-    }
-    config.colors = {
+    overrides.colors = {
       tab_bar = {
-        inactive_tab_edge = '#303030',
-        background = '#303030',
+        background = '#2a2a2a',
         active_tab = {
-          bg_color = '#444444',
-          fg_color = '#ffffff'
+          bg_color = '#3f3f3f',
+          fg_color = '#deddda'
         },
         inactive_tab = {
-          bg_color = '#303030',
-          fg_color = '#ffffff'
+          bg_color = '#2a2a2a',
+          fg_color = '#deddda'
         },
         inactive_tab_hover = {
-          bg_color = '#3f3f3f',
-          fg_color = '#ffffff'
-        },
-        new_tab = {
-          bg_color = '#303030',
-          fg_color = '#ffffff'
-        },
-        new_tab_hover = {
-          bg_color = '#3f3f3f',
-          fg_color = '#ffffff'
+          bg_color = '#2a2a2a',
+          fg_color = '#deddda'
         }
       },
-      foreground = '#ffffff',
-      background = '#1e1e1e',
-      cursor_border = '#ffffff',
-      selection_bg = '#ffffff',
-      selection_fg = '#1e1e1e',
+      foreground = '#deddda',
+      background = '#1d1d1d',
+      cursor_border = '#9a9996',
+      cursor_bg = '#9a9996',
+      cursor_fg = '#1d1d1d',
+      selection_bg = '#193d66',
       ansi = {
         '#241f31',
         '#c01c28',
@@ -152,8 +116,7 @@ local function scheme_for_appearance(appearance)
       }
     }
   end
-end
-
-scheme_for_appearance(get_appearance())
+  window:set_config_overrides(overrides)
+end)
 
 return config

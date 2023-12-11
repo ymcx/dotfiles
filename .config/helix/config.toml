@@ -1,4 +1,4 @@
-theme = "gnome" #fleet_dark adwaita-dark rasmus
+theme = "adwaita-dark" #fleet_dark adwaita-dark rasmus
 
 [keys.insert]
 S-tab = "unindent"
@@ -37,14 +37,20 @@ render = true
 character = "⸽"
 
 [editor]
+scroll-lines = 2
+# scroll-lines = 6
 line-number = "relative"
-scroll-lines = 1
-color-modes	= true
+color-modes     = true
 bufferline = "multiple"
 scrolloff = 0
 idle-timeout = 0
 completion-trigger-len = 1
 completion-replace = true
+cursorline = true
+preview-completion-insert       = false
+
+[editor.lsp]
+display-inlay-hints = true
 
 [editor.cursor-shape]
 insert = "bar"
@@ -54,3 +60,6 @@ wrap-around = false
 
 [editor.gutters]
 layout = ["diff", "diagnostics", "line-numbers", "spacer", "spacer"]
+
+[editor.smart-tab]
+supersede-menu = true

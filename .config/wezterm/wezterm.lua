@@ -1,9 +1,12 @@
 local wezterm = require 'wezterm'
 local config = {}
 
+-- local gpus = wezterm.gui.enumerate_gpus()
+-- config.webgpu_preferred_adapter = gpus[2]
 -- config.window_decorations = 'NONE'
 config.window_decorations = 'RESIZE'
 
+config.default_cursor_style = 'SteadyBar'
 config.window_close_confirmation = 'NeverPrompt'
 config.show_new_tab_button_in_tab_bar = false
 config.adjust_window_size_when_changing_font_size = false
@@ -28,6 +31,7 @@ wezterm.on('update-status', function(window, pane)
     overrides.window_frame = {
       font = wezterm.font 'Cantarell',
       active_titlebar_bg = '#303030',
+      inactive_titlebar_bg = '#303030',
       font_size = 11
     }
     overrides.colors = {
@@ -75,6 +79,7 @@ wezterm.on('update-status', function(window, pane)
     overrides.window_frame = {
       font = wezterm.font 'Cantarell',
       active_titlebar_bg = '#242424',
+      inactive_titlebar_bg = '#242424',
       font_size = 11
     }
     overrides.colors = {

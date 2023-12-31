@@ -47,7 +47,7 @@ idle-timeout = 0
 completion-trigger-len = 1
 completion-replace = true
 cursorline = true
-preview-completion-insert       = false
+preview-completion-insert = false
 
 [editor.lsp]
 display-inlay-hints = true

@@ -1,55 +1,55 @@
 local wezterm = require 'wezterm'
 local config = {}
 
--- local gpus = wezterm.gui.enumerate_gpus()
--- config.webgpu_preferred_adapter = gpus[2]
+-- config.window_decorations = 'NONE'
+config.window_decorations = 'RESIZE'
 
 config.window_close_confirmation = 'NeverPrompt'
-config.default_cursor_style = 'SteadyBar'
 config.show_new_tab_button_in_tab_bar = false
-config.tab_max_width = 23
-config.use_fancy_tab_bar = false
 config.adjust_window_size_when_changing_font_size = false
 config.font_size = 13
 config.check_for_updates = false
 config.audible_bell = 'Disabled'
 config.hide_mouse_cursor_when_typing = false
 config.show_tab_index_in_tab_bar = false
-config.window_decorations = 'RESIZE'
+config.force_reverse_video_cursor = true
 config.font = wezterm.font 'JetBrains Mono'
 
 config.window_padding = {
-  left = 0,
-  right = 0,
-  top = 0,
-  bottom = 0
+  left = 6,
+  right = 6,
+  top = 2,
+  bottom = 2
 }
 
 wezterm.on('update-status', function(window, pane)
   local overrides = window:get_config_overrides() or {}
   if window:is_focused() then
+    overrides.window_frame = {
+      font = wezterm.font 'Cantarell',
+      active_titlebar_bg = '#303030',
+      font_size = 11
+    }
     overrides.colors = {
       tab_bar = {
-        background = '#303030',
+        inactive_tab_edge = '#4f4f4f',
         active_tab = {
           bg_color = '#444444',
-          fg_color = '#deddda'
+          fg_color = '#ffffff'
         },
         inactive_tab = {
           bg_color = '#303030',
-          fg_color = '#deddda'
+          fg_color = '#ffffff'
         },
         inactive_tab_hover = {
           bg_color = '#303030',
-          fg_color = '#deddda'
+          fg_color = '#ffffff'
         }
       },
-      foreground = '#deddda',
+      foreground = '#ffffff',
       background = '#1d1d1d',
-      cursor_border = '#9a9996',
-      cursor_bg = '#9a9996',
-      cursor_fg = '#1d1d1d',
-      selection_bg = '#193d66',
+      selection_fg = '#1d1d1d',
+      selection_bg = '#ffffff',
       ansi = {
         '#241f31',
         '#c01c28',
@@ -72,28 +72,31 @@ wezterm.on('update-status', function(window, pane)
       }
     }
   else
+    overrides.window_frame = {
+      font = wezterm.font 'Cantarell',
+      active_titlebar_bg = '#242424',
+      font_size = 11
+    }
     overrides.colors = {
       tab_bar = {
-        background = '#2a2a2a',
+        inactive_tab_edge = '#343434',
         active_tab = {
-          bg_color = '#3f3f3f',
-          fg_color = '#deddda'
+          bg_color = '#2f2f2f',
+          fg_color = '#919191'
         },
         inactive_tab = {
-          bg_color = '#2a2a2a',
-          fg_color = '#deddda'
+          bg_color = '#242424',
+          fg_color = '#919191'
         },
         inactive_tab_hover = {
-          bg_color = '#2a2a2a',
-          fg_color = '#deddda'
+          bg_color = '#242424',
+          fg_color = '#919191'
         }
       },
-      foreground = '#deddda',
+      foreground = '#ffffff',
       background = '#1d1d1d',
-      cursor_border = '#9a9996',
-      cursor_bg = '#9a9996',
-      cursor_fg = '#1d1d1d',
-      selection_bg = '#193d66',
+      selection_fg = '#1d1d1d',
+      selection_bg = '#ffffff',
       ansi = {
         '#241f31',
         '#c01c28',

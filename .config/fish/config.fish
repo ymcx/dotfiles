@@ -9,14 +9,7 @@ else
     set prompt_color $fish_color_command
 end
 
-set -Ux EDITOR hx
-set -Ux NNN_TRASH 2
-set -Ux fish_greeting
-set -Ux ANDROID_HOME $HOME/.android
-set -Ux fish_prompt_pwd_dir_length 0
-set -Ux NNN_TMPFILE /home/user/.config/nnn/.lastd
-
-alias up="echo '> DNF' && sudo dnf distro-sync -y && echo '> Flatpak' && flatpak update -y && echo '> fwupd' && sudo fwupdmgr update -y"
+alias up="echo '> DNF' && sudo dnf distro-sync -y && sudo dnf autoremove -y && echo '> Flatpak' && flatpak update -y && echo '> fwupd' && sudo fwupdmgr update -y"
 alias ls="ls --color=always -XNAh --group-directories-first --time-style=+'%d.%m.%Y %R'"
 alias grep="grep --color=always -i"
 alias ip="ip -color=always"
@@ -30,7 +23,7 @@ alias df="df -h"
 alias dnf="dnf5"
 
 function fish_title
-    string join "" " ⟪" (echo (prompt_pwd) | cut -c-19 ) "⟫                    "
+    string join "" (prompt_pwd) (string repeat -n 1000 " ")
 end
 
 function fish_prompt

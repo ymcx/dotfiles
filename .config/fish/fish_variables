@@ -1,7 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export ANDROID_HOME:/home/user/\x2eandroid
-SETUVAR --export EDITOR:hx
 SETUVAR --export NNN_TMPFILE:/home/user/\x2econfig/nnn/\x2elastd
 SETUVAR --export NNN_TRASH:2
 SETUVAR __fish_initialized:3400

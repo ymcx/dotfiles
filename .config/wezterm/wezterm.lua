@@ -1,31 +1,29 @@
 local wezterm = require 'wezterm'
 local config = {}
 
--- local gpus = wezterm.gui.enumerate_gpus()
--- config.webgpu_preferred_adapter = gpus[2]
 -- config.window_decorations = 'NONE'
 config.window_decorations = 'RESIZE'
 
-config.default_cursor_style = 'SteadyBar'
-config.window_close_confirmation = 'NeverPrompt'
+config.default_cursor_style = 'BlinkingBlock'
+config.cursor_blink_ease_in = 'Constant'
+config.cursor_blink_ease_out = 'Constant'
+config.cursor_blink_rate = 600
 config.show_new_tab_button_in_tab_bar = false
 config.adjust_window_size_when_changing_font_size = false
 config.font_size = 13
-config.check_for_updates = false
-config.audible_bell = 'Disabled'
 config.hide_mouse_cursor_when_typing = false
 config.show_tab_index_in_tab_bar = false
 config.force_reverse_video_cursor = true
 config.font = wezterm.font 'JetBrains Mono'
 
 config.window_padding = {
-  left = 6,
-  right = 6,
-  top = 2,
-  bottom = 2
+  left = 0,
+  right = 0,
+  top = 0,
+  bottom = 0
 }
 
-wezterm.on('update-status', function(window, pane)
+wezterm.on('window-focus-changed', function(window, pane)
   local overrides = window:get_config_overrides() or {}
   if window:is_focused() then
     overrides.window_frame = {
@@ -36,7 +34,7 @@ wezterm.on('update-status', function(window, pane)
     }
     overrides.colors = {
       tab_bar = {
-        inactive_tab_edge = '#4f4f4f',
+        inactive_tab_edge = '#303030',
         active_tab = {
           bg_color = '#444444',
           fg_color = '#ffffff'
@@ -52,6 +50,7 @@ wezterm.on('update-status', function(window, pane)
       },
       foreground = '#ffffff',
       background = '#1d1d1d',
+      cursor_border = '#ffffff',
       selection_fg = '#1d1d1d',
       selection_bg = '#ffffff',
       ansi = {
@@ -84,7 +83,7 @@ wezterm.on('update-status', function(window, pane)
     }
     overrides.colors = {
       tab_bar = {
-        inactive_tab_edge = '#343434',
+        inactive_tab_edge = '#242424',
         active_tab = {
           bg_color = '#2f2f2f',
           fg_color = '#919191'
@@ -100,6 +99,7 @@ wezterm.on('update-status', function(window, pane)
       },
       foreground = '#ffffff',
       background = '#1d1d1d',
+      cursor_border = '#ffffff',
       selection_fg = '#1d1d1d',
       selection_bg = '#ffffff',
       ansi = {
@@ -125,6 +125,10 @@ wezterm.on('update-status', function(window, pane)
     }
   end
   window:set_config_overrides(overrides)
+end)
+
+wezterm.on('format-window-title', function(tab, pane, tabs, panes, config)
+  return string.gsub(tab.active_pane.title, '(.)%s*', '%1') .. ' - WezTerm'
 end)
 
 return config

@@ -21,9 +21,10 @@ alias rm="rm -rf"
 alias cp="cp -r"
 alias df="df -h"
 alias dnf="dnf5"
+alias cat="bat"
 
 function fish_title
-    string join "" (prompt_pwd) (string repeat -n 1000 " ")
+    string join "" (prompt_pwd) (string repeat -n 830 " ")
 end
 
 function fish_prompt

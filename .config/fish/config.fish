@@ -7,6 +7,7 @@ else
     set prompt_color $fish_color_command
 end
 
+alias ls="eza --group-directories-first --time-style=+'%d.%m.%Y %R' -a --octal-permissions"
 alias mkdir="mkdir -p"
 alias unzip="unzip -q"
 alias zip="zip -rq"
@@ -17,7 +18,7 @@ alias ip="ip -c"
 alias dnf="dnf5"
 alias cat="bat"
 alias vi="nvim"
-alias ls="eza"
+alias grep="rg"
 
 function fish_title
     echo (prompt_pwd) (string repeat -n 830 " ")

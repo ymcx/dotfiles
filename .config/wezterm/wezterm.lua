@@ -49,10 +49,9 @@ wezterm.on('window-focus-changed', function(window, pane)
         }
       },
       foreground = '#ffffff',
-      background = '#1d1d1d',
+      background = '#1e1e1e',
       cursor_border = '#ffffff',
-      selection_fg = '#1d1d1d',
-      selection_bg = '#ffffff',
+      selection_bg = '#193d66',
       ansi = {
         '#241f31',
         '#c01c28',
@@ -98,10 +97,9 @@ wezterm.on('window-focus-changed', function(window, pane)
         }
       },
       foreground = '#ffffff',
-      background = '#1d1d1d',
+      background = '#1e1e1e',
       cursor_border = '#ffffff',
-      selection_fg = '#1d1d1d',
-      selection_bg = '#ffffff',
+      selection_bg = '#193d66',
       ansi = {
         '#241f31',
         '#c01c28',

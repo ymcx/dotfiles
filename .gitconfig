@@ -2,15 +2,6 @@
   name = ymcx
   email = <>
 
-[color]
-  ui = auto
-
-[filter "lfs"]
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
-
 [core]
   editor = $EDITOR
   pager = delta
@@ -20,10 +11,9 @@
 
 [delta]
   navigate = true
-  light = false
+  syntax-theme = base16
+  hunk-header-style =
+  file-style = omit
 
 [merge]
   conflictstyle = diff3
-
-[diff]
-  colorMoved = default

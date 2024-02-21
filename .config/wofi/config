@@ -1,0 +1,12 @@
+show=drun
+width=576
+height=192
+prompt=
+allow_images=true
+hide_scroll=true
+insensitive=true
+no_actions=true
+sort_order=alphabetical
+filter_rate=1
+image_size=24
+single_click=true

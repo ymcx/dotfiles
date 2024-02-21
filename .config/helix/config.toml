@@ -1,0 +1,59 @@
+theme = "adwaita-dark"
+
+[keys.insert]
+S-tab   = "unindent"
+C-right = "move_next_word_start"
+C-left  = "move_prev_word_start"
+C-up    = "goto_prev_paragraph"
+C-down  = "goto_next_paragraph"
+
+[keys.normal]
+tab     = "goto_next_buffer"
+S-tab   = "goto_previous_buffer"
+C-right = "move_next_word_start"
+C-left  = "move_prev_word_start"
+C-up    = "goto_prev_paragraph"
+C-down  = "goto_next_paragraph"
+
+[keys.select]
+tab     = "goto_next_buffer"
+S-tab   = "goto_previous_buffer"
+C-right = "move_next_word_start"
+C-left  = "move_prev_word_start"
+C-up    = "goto_prev_paragraph"
+C-down  = "goto_next_paragraph"
+
+[editor.statusline]
+left        = ["mode"]
+right       = ["diagnostics"]
+mode.normal = "   "
+mode.insert = "   "
+mode.select = "   "
+
+[editor.search]
+wrap-around = false
+
+[editor.smart-tab]
+# enable = false
+
+[editor]
+scrolloff              = 0
+scroll-lines           = 3
+true-color             = true
+gutters                = ["diff", "diagnostics", "spacer", "line-numbers", "spacer"]
+bufferline             = "always"
+color-modes            = true
+completion-replace     = true
+completion-trigger-len = 1
+idle-timeout           = 0
+# auto-pairs             = false
+
+[editor.cursor-shape]
+insert = "bar"
+
+[editor.whitespace.render]
+tab = "all"
+
+[editor.whitespace.characters]
+tab    = ">"
+tabpad = "-"

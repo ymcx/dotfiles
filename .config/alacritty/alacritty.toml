@@ -1,0 +1,62 @@
+[window]
+decorations = "None"
+padding     = {x=1,y=1}
+
+[mouse]
+hide_when_typing = true
+
+[font]
+normal = {family="FiraCodeNerdFont"}
+size   = 13
+
+[colors]
+cursor         = { text       = "#1e1e1e", cursor     = "#ffffff" }
+vi_mode_cursor = { text       = "#1e1e1e", cursor     = "#ffffff" }
+footer_bar     = { foreground = "#ffffff", background = "#1e1e1e" }
+
+[colors.primary]
+foreground = "#ffffff"
+background = "#1e1e1e"
+
+[colors.search]
+matches       = { foreground = "#c0bfbc", background = "#1e1e1e" }
+focused_match = { foreground = "#51a1ff", background = "#1e1e1e" }
+
+[colors.hints]
+start = { foreground = "#51a1ff", background = "#1e1e1e" }
+end   = { foreground = "#c0bfbc", background = "#1e1e1e" }
+
+[colors.normal]
+black   = "#241f31"
+red     = "#c01c28"
+green   = "#2ec27e"
+yellow  = "#f5c211"
+blue    = "#1e78e4"
+magenta = "#9841bb"
+cyan    = "#0ab9dc"
+white   = "#c0bfbc"
+
+[colors.bright]
+black   = "#5e5c64"
+red     = "#ed333b"
+green   = "#57e389"
+yellow  = "#f8e45c"
+blue    = "#51a1ff"
+magenta = "#c061cb"
+cyan    = "#4fd2fd"
+white   = "#f6f5f4"
+
+[cursor.style]
+shape = "Beam"
+
+[cursor]
+unfocused_hollow = false
+thickness        = 0.1
+
+[keyboard]
+bindings = [
+  { key = "C", mods = "Control",       action = "Copy"   },
+  { key = "V", mods = "Control",       action = "Paste"  },
+  { key = "C", mods = "Control|Shift", chars  = "\u0003" },
+  { key = "V", mods = "Control|Shift", chars  = "\u0016" }
+]

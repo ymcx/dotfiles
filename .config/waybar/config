@@ -1,0 +1,70 @@
+{
+  "height": 32,
+  "layer": "top",
+  "position": "top",
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": ["hyprland/language", "network", "bluetooth", "pulseaudio", "battery"],
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "default": "󰚍",
+      "active": "󰚍󰚍󰚍󰚍󰚍"
+    }
+  },
+
+  "clock": {
+    "format": "{:%R}",
+    "tooltip": true,
+    "tooltip-format": "{:%A %d.%m.%Y}"
+  },
+
+  "hyprland/language": {
+    "format": "{shortDescription}",
+    "on-click-release": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
+  },
+
+  "network": {
+    "format": "{icon}",
+    "format-disconnected": "󰤮",
+    "format-icons": {
+      "default": ["󰤯","󰤟","󰤢","󰤥","󰤨"]
+    },
+    "on-click-release": "rfkill toggle wifi",
+    "on-click-middle-release": "zenity --password | sudo -Sk ether-wake 74:56:3c:23:a0:86",
+    "on-click-right-release": "foot fish -c 'networkctl && fish'",
+    "tooltip-format": "{essid}\n{ipaddr}"
+  },
+
+  "bluetooth": {
+    "format": "󰂯",
+    "format-off": "󰂲",
+    "on-click-release": "~/.config/waybar/bluetooth.sh",
+    "on-click-right-release": "foot bluetoothctl",
+    "tooltip-format-connected": "{device_alias}"
+  },
+
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-muted": "󰸈",
+    "format-icons": {
+      "default": ["󰕿","󰖀","󰕾"]
+    },
+    "on-click-release": "~/.config/hypr/mute.sh",
+    "on-click-right-release": "foot fish -c 'amixer && fish'",
+    "tooltip-format": "{desc}\n{volume}%"
+  },
+
+  "battery": {
+    "format": "{icon}",
+    "format-icons": {
+      "default": ["󰂎","󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"],
+      "charging": ["󰢟","󰢜","󰂆","󰂇","󰂈","󰢝","󰂉","󰢞","󰂊","󰂋","󰂅"]
+    },
+    "states": {
+      "critical": 10
+    },
+    "tooltip-format": "{capacity}%"
+  }
+}

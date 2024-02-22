@@ -19,6 +19,13 @@ case $1 in
       esac
     fi;;
 
+  close)
+    if [ "$(hyprctl activewindow -j | jq -r '.class')" = "foot" ]; then
+      kill $(hyprctl clients | grep $(hyprctl activewindow | awk '/grouped/ {print $2}') -B 6 | awk '/pid/ {print $2}')
+    else
+      hyprctl dispatch killactive
+    fi;;    
+
   screenshot)
     if [[ $2 =~ ca|sa ]]; then
       area="-g $(slurp)"

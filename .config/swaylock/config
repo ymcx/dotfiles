@@ -1,4 +1,4 @@
-image=~/.local/share/backgrounds/lock
+image=~/.config/backgrounds/lock
 indicator-thickness=128
 indicator-idle-visible
 disable-caps-lock-text

@@ -25,6 +25,10 @@ function sudo
   command sudo $argv
 end
 
+function boot
+  command qemu-system-x86_64 -cpu host -smp (nproc) -m (awk '/MemTotal/ {printf "%.f", $2/2000000}' /proc/meminfo)G -vga qxl -machine type=q35,accel=kvm -enable-kvm -cdrom $argv
+end
+
 alias ls="eza --group-directories-first --time-style=+'%d.%m.%Y %R' -a --octal-permissions"
 alias open="gio open > /dev/null"
 alias trash="gio trash"

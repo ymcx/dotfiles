@@ -1,5 +1,5 @@
 window#waybar {
-  background-color: #000000;
+  background-color: #353535;
 }
 
 #workspaces button.active, #clock, #language, #network, #bluetooth, #pulseaudio, #battery {
@@ -16,16 +16,12 @@ window#waybar {
 
 #workspaces button.active, #workspaces button {
   font-size: 5px;
+  padding: 0;
   border: 0;
-}
-
-#workspaces button.active {
-  padding: 0 6px;
 }
 
 #workspaces button {
   color: #797979;
-  padding: 0;
 }
 
 #clock, #language {

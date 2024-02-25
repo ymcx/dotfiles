@@ -7,7 +7,10 @@
   "modules-right": ["network", "bluetooth", "pulseaudio", "battery"],
 
   "hyprland/workspaces": {
-    "format": "󰚍"
+    "format": "⬤",
+    "persistent-workspaces": {
+      "*": 4
+    }
   },
 
   "clock": {
@@ -16,45 +19,32 @@
     "tooltip-format": "{:%A %d.%m.%Y}"
   },
 
-  "hyprland/language": {
-    "format": "{shortDescription}",
-    "on-click-release": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
-  },
-
   "network": {
     "format": "{icon}",
     "format-disconnected": "󰤮",
     "format-icons": {
       "default": ["󰤯","󰤟","󰤢","󰤥","󰤨"]
     },
-    "on-click-release": "rfkill toggle wifi",
-    "on-click-middle-release": "zenity --password | sudo -Sk ether-wake 74:56:3c:23:a0:86",
-    "on-click-right-release": "foot fish -c 'networkctl && fish'",
+    "on-click-release": "~/.config/hypr/script.sh wifi",
     "tooltip-format": "{essid}\n{ipaddr}"
   },
 
   "bluetooth": {
     "format"    : "󰂯",
     "format-off": "󰂲",
-    "on-click-release": "~/.config/waybar/bluetooth.sh",
-    "on-click-right-release": "foot bluetoothctl",
-    "tooltip-format-connected": "{device_alias}"
+    "on-click-release": "~/.config/hypr/script.sh bluetooth",
+    "tooltip-format": "{device_alias}"
   },
 
   "pulseaudio": {
     "states": {
-        "muted": 0,
-        "low"  : 33,
-        "med"  : 66,
-        "hig"  : 100
+        "muted": 0
     },
     "format": "{icon}",
-    "format-muted": "󰸈",
-    "format-low"  : "󰕿",
-    "format-med"  : "󰖀",
-    "format-hig"  : "󰕾",
+    "format-muted"          : "󰸈",
+    "format-bluetooth-muted": "󰸈",
+    "format-icons": ["󰕿","󰖀","󰕾"],
     "on-click-release": "~/.config/hypr/script.sh speakers x",
-    "on-click-right-release": "foot fish -c 'wpctl show && fish'",
     "tooltip-format": "{desc}\n{volume}%"
   },
 

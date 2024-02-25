@@ -1,21 +1,17 @@
 window#waybar {
-  background-color: #353535;
+  background-color: #000000;
 }
 
-#workspaces button.active, #clock, #language, #network, #bluetooth, #pulseaudio, #battery {
+#workspaces button.active, #clock, #network, #bluetooth, #pulseaudio, #battery {
   color: #f2f2f2;
 }
 
-.modules-left {
+.modules-left, .modules-right {
   padding: 0 10px;
 }
 
-.modules-right {
-  padding: 0 20px;
-}
-
 #workspaces button.active, #workspaces button {
-  font-size: 5px;
+  font-size: 7px;
   padding: 0;
   border: 0;
 }
@@ -24,14 +20,10 @@ window#waybar {
   color: #797979;
 }
 
-#clock, #language {
+#clock {
   font-family: Cantarell;
   font-weight: bold;
   font-size: 15px;
-}
-
-#language {
-  padding: 0 23px;
 }
 
 #network, #bluetooth, #pulseaudio, #battery {
@@ -39,10 +31,18 @@ window#waybar {
 }
 
 #network {
-  padding: 0 10px;
+  padding: 0 13px;
 }
 
-#bluetooth, #pulseaudio, #battery {
+#bluetooth {
+  padding: 0 6px;
+}
+
+#pulseaudio {
+  padding: 0 9px;
+}
+
+#battery {
   padding: 0 8px;
 }
 

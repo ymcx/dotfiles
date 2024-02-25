@@ -1,17 +1,11 @@
-bind \cs "echo && ls; commandline -f repaint"
-bind \cx "cd ..; commandline -f repaint"
+bind \cs "echo && ls   ; commandline -f repaint"
+bind \ca "echo && ls -l; commandline -f repaint"
+bind \cx "cd ..        ; commandline -f repaint"
 
 if set -q SSH_TTY
   set fish_color_prompt $fish_color_cwd_root
 else
   set fish_color_prompt $fish_color_cwd
-end
-
-function findaddr
-  set ip (hostname -I | awk '{print $1}' | cut -d "." -f 4)
-  for i in (seq 101 109 | grep -v $ip)
-    ping -c 1 -W 0.02 -q -s 1 192.168.8."$i" | awk '/ 0% / {print a} {a = $2}'
-  end
 end
 
 function fish_prompt
@@ -25,11 +19,11 @@ function sudo
   command sudo $argv
 end
 
-function boot
-  command qemu-system-x86_64 -cpu host -smp (nproc) -m (awk '/MemTotal/ {printf "%.f", $2/2000000}' /proc/meminfo)G -vga qxl -machine type=q35,accel=kvm -enable-kvm -cdrom $argv
-end
 
 alias ls="eza --group-directories-first --time-style=+'%d.%m.%Y %R' -a --octal-permissions"
+alias wake="sudo ether-wake 74:56:3c:23:a0:86"
+alias ips="sh ~/.config/hypr/script.sh ips"
+alias vm="sh ~/.config/hypr/script.sh vm"
 alias open="gio open > /dev/null"
 alias trash="gio trash"
 alias mkdir="mkdir -p"

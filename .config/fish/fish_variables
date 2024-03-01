@@ -7,8 +7,8 @@ SETUVAR fish_color_autosuggestion:brblack
 SETUVAR fish_color_cancel:brcyan
 SETUVAR fish_color_command:brwhite
 SETUVAR fish_color_comment:brblack
-SETUVAR fish_color_cwd:white
-SETUVAR fish_color_cwd_root:brcyan
+SETUVAR fish_color_cwd:brcyan
+SETUVAR fish_color_cwd_root:brpurple
 SETUVAR fish_color_end:brcyan
 SETUVAR fish_color_error:brpurple
 SETUVAR fish_color_escape:brcyan

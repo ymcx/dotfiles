@@ -1,3 +1,5 @@
+#! /usr/bin/bash
+
 wob=$XDG_RUNTIME_DIR/wob.sock
 
 isTerminal() {
@@ -9,6 +11,14 @@ isTerminal() {
 
 say() {
   hyprctl notify -1 5000 0 "$1"
+}
+
+background() {
+  RESOLUTION="$(xdpyinfo | grep 'dimensions' | sed 's/[^0-9]//g')"
+  HEIGHT="$(echo $RESOLUTION | cut -c 5-8)"
+  WIDTH="$(echo $RESOLUTION | cut -c 1-4)"
+  convert -resize "$WIDTH"x"$HEIGHT"^ -gravity center -extent "$WIDTH"x"$HEIGHT" ~/.config/background ~/.config/background.png
+  mv ~/.config/background.png ~/.config/background
 }
 
 volume() {
@@ -74,6 +84,10 @@ wifi() {
   rfkill toggle wifi
 }
 
+wake() {
+  sudo ether-wake 74:56:3c:23:a0:86
+}
+
 vm() {
   MEM=$(awk '/MemTotal/ {printf "%.f", $2/2000000}' /proc/meminfo)
   CORES=$(nproc)
@@ -96,6 +110,24 @@ ips() {
   done
 }
 
+update() {
+  sudo dnf distro-sync -y
+  cd ~/Projects/hypr/hypridle || exit
+  git pull
+  cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -S . -B ./build
+  cmake --build ./build --config Release --target hypridle -j "$(nproc)"
+  sudo cmake --install build
+  cd ~/Projects/hypr/hyprlock || exit
+  git pull
+  cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -S . -B ./build
+  cmake --build ./build --config Release --target hyprlock -j "$(nproc)"
+  sudo cmake --install build
+  cd ~/Projects/hypr/hyprpaper || exit
+  git pull
+  make all
+  sudo cp -f ./build/hyprpaper /usr/bin/
+}
+
 case $1 in
   speakers  ) volume SINK   "$2" ;;
   microphone) volume SOURCE "$2" ;;
@@ -106,4 +138,7 @@ case $1 in
   wifi      ) wifi               ;;
   vm        ) vm            "$@" ;;
   ips       ) ips                ;;
+  wake      ) wake               ;;
+  background) background         ;;
+  update    ) update             ;;
 esac

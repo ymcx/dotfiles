@@ -10,14 +10,14 @@ isTerminal() {
 }
 
 say() {
-  hyprctl notify -1 5000 0 "$1"
+  hyprctl notify -1 2000 0 "$1"
 }
 
 background() {
   RESOLUTION="$(xdpyinfo | grep 'dimensions' | sed 's/[^0-9]//g')"
   HEIGHT="$(echo $RESOLUTION | cut -c 5-8)"
   WIDTH="$(echo $RESOLUTION | cut -c 1-4)"
-  convert -resize "$WIDTH"x"$HEIGHT"^ -gravity center -extent "$WIDTH"x"$HEIGHT" ~/.config/background ~/.config/background.png
+  convert -resize "$WIDTH"x"$HEIGHT"^ -gravity center -extent "$WIDTH"x"$HEIGHT" "$1" ~/.config/background.png
   mv ~/.config/background.png ~/.config/background
 }
 
@@ -72,6 +72,7 @@ bluetooth() {
     done
   fi
   say "Bluetooth has been turned off"
+  rfkill unblock bluetooth
   bluetoothctl power off
 }
 
@@ -139,6 +140,6 @@ case $1 in
   vm        ) vm            "$@" ;;
   ips       ) ips                ;;
   wake      ) wake               ;;
-  background) background         ;;
+  background) background    "$2" ;;
   update    ) update             ;;
 esac

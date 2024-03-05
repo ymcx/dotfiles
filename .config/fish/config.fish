@@ -29,6 +29,7 @@ alias rm="rm -rf"
 alias cp="cp -r"
 
 alias ls="eza --group-directories-first --time-style=+'%d.%m.%Y %R' -a --octal-permissions"
+alias open="gio open &>/dev/null"
 alias cat="bat"
 alias grep="rg"
 alias vi="hx"

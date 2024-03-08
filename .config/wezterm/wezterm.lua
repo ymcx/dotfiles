@@ -1,12 +1,6 @@
 local wezterm = require 'wezterm'
 local config = {}
 
-
-config.alternate_buffer_wheel_scroll_speed = 1
-
-
-
-
 config.enable_tab_bar = false
 config.default_cursor_style = 'SteadyBar'
 config.adjust_window_size_when_changing_font_size = false

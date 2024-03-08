@@ -1,29 +1,10 @@
 theme = "base16_transparent"
 
-[keys.insert]
-S-tab   = "unindent"
-C-right = "move_next_word_start"
-C-left  = "move_prev_word_start"
-C-up    = "goto_prev_paragraph"
-C-down  = "goto_next_paragraph"
-
 [keys.normal]
-C-m     = "toggle_comments"
-tab     = "goto_next_buffer"
-S-tab   = "goto_previous_buffer"
-C-right = "move_next_word_start"
-C-left  = "move_prev_word_start"
-C-up    = "goto_prev_paragraph"
-C-down  = "goto_next_paragraph"
+C-m = "toggle_comments"
 
 [keys.select]
-C-m     = "toggle_comments"
-tab     = "goto_next_buffer"
-S-tab   = "goto_previous_buffer"
-C-right = "move_next_word_start"
-C-left  = "move_prev_word_start"
-C-up    = "goto_prev_paragraph"
-C-down  = "goto_next_paragraph"
+C-m = "toggle_comments"
 
 [editor.statusline]
 left        = ["mode"]
@@ -37,7 +18,6 @@ wrap-around = false
 
 [editor]
 scrolloff              = 0
-scroll-lines           = 3
 true-color             = true
 gutters                = ["diff", "diagnostics", "spacer", "line-numbers", "spacer"]
 bufferline             = "always"
@@ -48,6 +28,3 @@ idle-timeout           = 0
 
 [editor.cursor-shape]
 insert = "bar"
-
-[editor.whitespace.render]
-tab = "all"

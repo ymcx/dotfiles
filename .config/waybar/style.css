@@ -14,7 +14,7 @@ window#waybar {
 
 #workspaces button.active,
 #workspaces button {
-  font-size: 7px;
+  font-size: 7;
   padding: 0;
   border: 0;
 }
@@ -27,51 +27,47 @@ window#waybar {
 #bluetooth,
 #pulseaudio,
 #battery {
-  font-size: 19px;
+  font-size: 19;
 }
 
 #clock,
 #language,
 #battery.bat2 {
-  font-family: Monospace;
+  font-family: Droid Sans;
   font-weight: Bold;
-  font-size: 15px;
+  font-size: 15;
 }
 
 .modules-left {
-  padding: 0px 10px 0px 10px;
+  padding: 0 10;
 }
 
 .modules-right {
-  padding: 0px 11px 0px 11px;
-}
-
-#clock {
-  padding: 0px 0px 1px 0px;
+  padding: 0 7;
 }
 
 #language {
-  padding: 0px 17px 1px 17px;
+  padding: 0 17;
 }
 
 #network {
-  padding: 0px 14px 0px 14px;
+  padding: 0 14;
 }
 
 #bluetooth {
-  padding: 0px 6px 0px 6px;
+  padding: 0 6;
 }
 
 #pulseaudio {
-  padding: 0px 2px 0px 10px;
+  padding: 0 6 0 10;
 }
 
 #battery {
-  padding: 0px 0px 0px 17px;
+  padding: 0 0 0 12;
 }
 
 #battery.bat2 {
-  padding: 0px 2px 1px 2px;
+  padding: 0 6;
 }
 
 #battery.critical:not(.charging) {

@@ -14,7 +14,7 @@
   },
 
   "clock": {
-    "format": "{:%H∶%M}",
+    "format": "{:%H:%M}",
     "tooltip": true,
     "tooltip-format": "{:%A %d.%m.%Y}"
   },
@@ -37,6 +37,7 @@
   "bluetooth": {
     "format": "󰂯",
     "format-off": "󰂲",
+    "format-disabled": "󰂲",
     "on-click-release": "~/.config/hypr/script.sh bluetooth",
     "tooltip-format": "{device_alias}"
   },

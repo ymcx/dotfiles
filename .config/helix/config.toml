@@ -28,3 +28,6 @@ idle-timeout           = 0
 
 [editor.cursor-shape]
 insert = "bar"
+
+[editor.whitespace.render]
+tab = "all"

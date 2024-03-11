@@ -1,9 +1,11 @@
 [user]
-  name = ymcx
-  email = <>
+	name = Name
+	email = name@example.org
 
 [core]
-  editor = $EDITOR
+	editor = $EDITOR
+	autocrlf = false
+	filemode = false
 
 [color]
-  ui = auto
+	ui = auto

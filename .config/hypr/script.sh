@@ -109,19 +109,49 @@ wake() {
 }
 
 vm() {
-  MEM=$(awk '/MemTotal/ {printf "%.f", $2/2000000}' /proc/meminfo)
+  MEM=$(awk '/MemTotal/ {printf "%.f", $2/2000}' /proc/meminfo)
   CORES=$(nproc)
   ISO=$(readlink -f "$3")
+  NAME="$4"
   case "$2" in
     create)
-      NAME="$4"
-      OS="$5"
-      sudo qemu-img create -f qcow2 /var/lib/libvirt/images/"$NAME".qcow2 64G
-      sed "s|CHANGEME1|$NAME|g;s|CHANGEME2|$MEM|g;s|CHANGEME3|$CORES|g;s|CHANGEME4|$ISO|g" ~/.config/libvirt/"$OS".xml > /etc/libvirt/qemu/VM_"$NAME".xml
-      sudo virsh create /etc/libvirt/qemu/VM_"$NAME".xml
+      virt-install \
+        --connect qemu:///system \
+        --os-variant detect=off \
+        --virt-type kvm \
+        --arch x86_64 \
+        --machine q35 \
+        --name "$NAME" \
+        --boot uefi \
+        --cpu mode=maximum,topology.sockets=1,topology.cores="$CORES",topology.threads=1 \
+        --vcpus "$CORES" \
+        --memory "$MEM" \
+        --video virtio \
+        --graphics spice,listen=none \
+        --channel spicevmc \
+        --channel unix,target.type=virtio,target.name=org.qemu.guest_agent.0 \
+        --console pty,target.type=virtio \
+        --sound default \
+        --network type=default,model=virtio \
+        --controller type=virtio-serial \
+        --controller type=usb,model=none \
+        --controller type=scsi,model=virtio-scsi \
+        --noautoconsole \
+        --input type=keyboard,bus=virtio \
+        --input type=tablet,bus=virtio \
+        --rng /dev/urandom,model=virtio \
+        --disk path=/var/lib/libvirt/images/"$NAME".img,format=raw,bus=virtio,cache=writeback,size=64 \
+        --cdrom "$ISO"
     ;;
     boot)
-      qemu-system-x86_64 -cpu host -smp "$CORES" -m "$MEM"G -vga qxl -machine type=q35,accel=kvm -enable-kvm -cdrom "$ISO"
+      qemu-system-x86_64 \
+        -cpu host \
+        -smp "$CORES" \
+        -m "$MEM"M \
+        -vga qxl \
+        -machine type=q35,accel=kvm \
+        -enable-kvm \
+        -cdrom "$ISO"
     ;;
   esac
 }
@@ -129,27 +159,38 @@ vm() {
 ips() {
   ip=$(hostname -I | awk '{print $1}' | cut -d . -f 4)
   for i in $(seq 101 121 | grep -v "$ip"); do
-    ping -c 1 -W 0.02 -q -s 1 192.168.8."$i" | awk '/ 0% / {print a} {a = $2}'
+    ping -c 1 -W 0.05 -q -s 1 192.168.8."$i" | awk '/ 0% / {print a} {a = $2}'
   done
 }
 
 update() {
   sudo dnf distro-sync -y
-  sudo dnf autoremove -y
+  sudo dnf autoremove  -y
   if [ "$1" = all ]; then
-    wget https://www.eclipse.org/downloads/download.php?file=/jdtls/snapshots/jdt-language-server-latest.tar.gz -O /tmp/jdtls.tar.gz
+    # DEPOT HYPR JDTLS SDKMANAGER FLATPAK NPM PIP FWUPD 
+    mkdir -p /tmp/updoot
+    cd /tmp/updoot || exit
+    git -C ~/.android/depot_tools pull
+    HLOCK=$(curl -s -qI https://github.com/hyprwm/hyprlock/releases/latest  | awk -F '/' '/^location/ {print substr($NF, 1, length($NF)-1)}')
+    HIDLE=$(curl -s -qI https://github.com/hyprwm/hypridle/releases/latest  | awk -F '/' '/^location/ {print substr($NF, 1, length($NF)-1)}')
+    HPAPE=$(curl -s -qI https://github.com/hyprwm/hyprpaper/releases/latest | awk -F '/' '/^location/ {print substr($NF, 1, length($NF)-1)}')
+    wget https://github.com/hyprwm/hyprlock/releases/latest/download/"$HLOCK".tar.gz  \
+         https://github.com/hyprwm/hypridle/releases/latest/download/"$HIDLE".tar.gz  \
+         https://github.com/hyprwm/hyprpaper/releases/latest/download/"$HPAPE".tar.gz \
+         https://www.eclipse.org/downloads/download.php?file=/jdtls/snapshots/jdt-language-server-latest.tar.gz
+    find -- *.gz | xargs -n1 tar -xf
+    sudo chmod 755       hypr*/*
+    sudo chown root:root hypr*/*
+    sudo mv              hypr*/* /usr/local/bin/
     rm -rf ~/.config/helix/languages/jdtls/*
-    tar xfz /tmp/jdtls.tar.gz -C ~/.config/helix/languages/jdtls/
+    mv bin config_* features plugins ~/.config/helix/languages/jdtls/ 
     sdkmanager --update
-    ls ~/Projects/hypr/ | xargs -I {} git -C ~/Projects/hypr/{} pull
-    cmake -DCMAKE_BUILD_TYPE:STRING=Release -S ~/Projects/hypr/hypridle -B ~/Projects/hypr/hypridle/build
-    cmake -DCMAKE_BUILD_TYPE:STRING=Release -S ~/Projects/hypr/hyprlock -B ~/Projects/hypr/hyprlock/build
-    cmake --build ~/Projects/hypr/hypridle/build --config Release --target hypridle -j "$(nproc)"
-    cmake --build ~/Projects/hypr/hyprlock/build --config Release --target hyprlock -j "$(nproc)"
-    make all -C ~/Projects/hypr/hyprpaper -j "$(nproc)"
-    sudo cp -f ~/Projects/hypr/hyprpaper/build/hyprpaper /usr/bin/
-    sudo cmake --install ~/Projects/hypr/hypridle/build
-    sudo cmake --install ~/Projects/hypr/hyprlock/build
+    flatpak update -y
+    npm update
+    sudo pip list -o | awk '2 < NR {print $1}' | xargs -n1 sudo pip install -U 
+         pip list -o | awk '2 < NR {print $1}' | xargs -n1      pip install -U 
+    fwupdmgr refresh
+    fwupdmgr update -y
   fi
 }
 

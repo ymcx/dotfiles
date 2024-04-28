@@ -1,75 +1,9 @@
 {
-  "height": 32,
   "layer": "top",
-  "position": "top",
-  "modules-left": ["hyprland/workspaces"],
+  "height": 32,
   "modules-center": ["clock"],
-  "modules-right": ["hyprland/language", "network", "bluetooth", "pulseaudio", "battery", "battery#bat2"],
-
-  "hyprland/workspaces": {
-    "format": "⬤",
-    "persistent-workspaces": {
-      "*": 4
-    }
-  },
-
-  "clock": {
-    "format": "{:%H:%M}",
-    "tooltip": true,
-    "tooltip-format": "{:%A %d.%m.%Y}"
-  },
-
-  "hyprland/language": {
-    "format": "{shortDescription}",
-    "on-click-release": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
-  },
-
-  "network": {
-    "format": "{icon}",
-    "format-disconnected": "󰤮",
-    "format-icons": {
-      "default": ["󰤯","󰤟","󰤢","󰤥","󰤨"]
-    },
-    "on-click-release": "~/.config/hypr/script.sh wifi",
-    "tooltip-format": "{essid}\n{ipaddr}"
-  },
-
-  "bluetooth": {
-    "format": "󰂯",
-    "format-off": "󰂲",
-    "format-disabled": "󰂲",
-    "on-click-release": "~/.config/hypr/script.sh bluetooth",
-    "tooltip-format": "{device_alias}"
-  },
-
-  "pulseaudio": {
-    "states": {
-        "muted": 0
-    },
-    "format": "{icon}",
-    "format-muted": "󰸈",
-    "format-bluetooth-muted": "󰸈",
-    "format-icons": ["󰕿","󰖀","󰕾"],
-    "on-click-release": "~/.config/hypr/script.sh speakers x",
-    "tooltip-format": "{desc}\n{volume}%",
-    "on-scroll-down": "",
-    "on-scroll-up": ""
-  },
-
-  "battery": {
-    "format": "{icon}",
-    "format-icons": {
-      "default" : ["󰂎","󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"],
-      "charging": ["󰢟","󰢜","󰂆","󰂇","󰂈","󰢝","󰂉","󰢞","󰂊","󰂋","󰂅"]
-    },
-    "tooltip": false,
-    "states": {
-      "critical": 10
-    }
-  },
-
-  "battery#bat2": {
-    "format": "{capacity:3}%",
-    "tooltip": false
-  }
+  "margin-top": 10,
+  "margin-right": 10,
+  "margin-left": 1846,
+  "mode": "overlay"
 }

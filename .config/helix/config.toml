@@ -1,33 +1,31 @@
-theme = "base16_transparent"
-
-[keys.normal]
-C-m = "toggle_comments"
+theme = "monokai_pro"
 
 [keys.select]
-C-m = "toggle_comments"
+C-m   = "toggle_comments"
+tab   = "goto_next_buffer"
+S-tab = "goto_previous_buffer"
+
+[keys.normal]
+C-m   = "toggle_comments"
+tab   = "goto_next_buffer"
+S-tab = "goto_previous_buffer"
 
 [editor.statusline]
-left        = ["mode"]
-right       = ["diagnostics"]
-mode.normal = "    "
-mode.insert = "    "
-mode.select = "    "
+left = ["file-absolute-path", "spacer", "version-control"]
+center = ["workspace-diagnostics", "diagnostics"]
+right = ["position", "total-line-numbers", "primary-selection-length", "selections", "mode"]
+mode.normal = "N"
+mode.insert = "I"
+mode.select = "S"
+
+[editor.cursor-shape]
+insert = "bar"
 
 [editor.search]
 wrap-around = false
 
 [editor]
-scrolloff              = 0
-true-color             = true
-gutters                = ["diff", "diagnostics", "spacer", "line-numbers", "spacer"]
-bufferline             = "always"
-color-modes            = true
-completion-replace     = true
-completion-trigger-len = 1
-idle-timeout           = 0
-
-[editor.cursor-shape]
-insert = "bar"
-
-[editor.whitespace.render]
-tab = "all"
+scrolloff  = 0
+true-color = true
+gutters    = ["diff", "diagnostics", "spacer", "line-numbers", "spacer"]
+bufferline = "always"

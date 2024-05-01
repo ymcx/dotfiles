@@ -722,6 +722,7 @@ alias ls = ls -a
 alias ll = ls -al
 alias cp = cp -r
 alias rm = rm -r
+alias woman = man
 
 def ti [] {
     sh "/home/user/Documents/TI-Nspire CX/TI-Nspire/launcher/nspire_run.sh"

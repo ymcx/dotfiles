@@ -752,9 +752,18 @@ def update [] {
     let current = ($dir | path join latest)
     let latest = (http get "https://api.github.com/repos/eclipse-jdtls/eclipse.jdt.ls/tags" | first | get name | str replace "v" "")
     if ((cat $current) != $latest) {
-      $latest | save $current -f
       let url = "https://download.eclipse.org/jdtls/milestones"
       wget -qO - ($url | path join $latest (curl -sL ($url | path join $latest "latest.txt"))) | tar xz -C $dir
+      $latest | save $current -f
+    }
+
+    print "\n[KOTLIN]"
+    let dir = "/home/user/.config/helix/languages/kotlin"
+    let current = ($dir | path join latest)
+    let latest = (http get "https://api.github.com/repos/fwcd/kotlin-language-server/tags" | find -v gradle | first | get name)
+    if ((cat $current) != $latest) {
+        wget -qO - "https://github.com/fwcd/kotlin-language-server/releases/latest/download/server.zip" | bsdtar -xf- -C $dir
+        $latest | save $current -f
     }
 
     print "\n[ANDROID]"

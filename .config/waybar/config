@@ -1,9 +1,0 @@
-{
-  "layer": "top",
-  "height": 32,
-  "modules-center": ["clock"],
-  "margin-top": 10,
-  "margin-right": 10,
-  "margin-left": 1846,
-  "mode": "overlay"
-}

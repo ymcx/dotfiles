@@ -29,3 +29,10 @@ scrolloff  = 0
 true-color = true
 gutters    = ["diff", "diagnostics", "spacer", "line-numbers", "spacer"]
 bufferline = "always"
+
+[editor.whitespace.render]
+tab = "all"
+
+[editor.whitespace.characters]
+tab    = ">"
+tabpad = "-"

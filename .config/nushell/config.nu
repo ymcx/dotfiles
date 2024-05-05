@@ -714,34 +714,21 @@ $env.config = {
     ]
 }
 
-alias do = sh /home/user/.config/sway/script.sh
-alias google-chrome-stable = sh ~/.config/google-chrome-stable.sh
-alias google-chrome = sh ~/.config/google-chrome-stable.sh
+alias google-chrome-stable = sh ~/.config/google-chrome/start.sh
+alias google-chrome = google-chrome-stable
 alias dnf = dnf5
 alias ls = ls -a
-alias ll = ls -al
+alias ll = ls -l
 alias cp = cp -r
 alias rm = rm -r
-alias woman = man
 
-def ti [] {
-    sh "/home/user/Documents/TI-Nspire CX/TI-Nspire/launcher/nspire_run.sh"
-}
-
-def wake [] {
-    sudo ether-wake "74:56:3c:23:a0:86"
-}
-
-def boot [ISO: string] {
+def vm [ACTION: string ISO: string NAME?: string] {
     let CORES = nproc
     let MEMORY = awk '/MemTotal/ {printf "%.f", $2/2000}' /proc/meminfo
-    qemu-system-x86_64 -cpu host -smp $CORES -m $MEMORY -vga qxl -machine type=q35,accel=kvm -enable-kvm -cdrom $ISO
-}
-
-def create [ISO: string NAME: string] {
-    let CORES = nproc
-    let MEMORY = awk '/MemTotal/ {printf "%.f", $2/2000}' /proc/meminfo
-    virt-install --connect qemu:///session --os-variant detect=off --virt-type kvm --arch x86_64 --machine q35 --name $NAME --boot uefi --cpu mode=maximum,topology.sockets=1,topology.threads=1 --vcpus $CORES --memory $MEMORY --video virtio --graphics spice,listen=none --channel spicevmc --channel unix,target.type=virtio,target.name=org.qemu.guest_agent.0 --console pty,target.type=virtio --sound default --network type=default,model=virtio --controller type=virtio-serial --controller type=usb,model=none --controller type=scsi,model=virtio-scsi --noautoconsole --input type=keyboard,bus=virtio --input type=tablet,bus=virtio --rng /dev/urandom,model=virtio --disk path=/home/user/.local/share/gnome-boxes/images/$NAME.img,format=raw,bus=virtio,cache=writeback,size=64 --cdrom $ISO
+    match $ACTION {
+        create => $"virt-install --connect qemu:///session --os-variant detect=off --virt-type kvm --arch x86_64 --machine q35 --name ($NAME) --boot uefi --cpu mode=maximum,topology.sockets=1,topology.cores=($CORES),topology.threads=1 --vcpus ($CORES) --memory ($MEMORY) --video virtio --graphics spice,listen=none --channel spicevmc --channel unix,target.type=virtio,target.name=org.qemu.guest_agent.0 --console pty,target.type=virtio --sound default --network type=default,model=virtio --controller type=virtio-serial --controller type=usb,model=none --controller type=scsi,model=virtio-scsi --noautoconsole --input type=keyboard,bus=virtio --input type=tablet,bus=virtio --rng /dev/urandom,model=virtio --disk path=/home/user/.local/share/gnome-boxes/images/($NAME).img,format=raw,bus=virtio,cache=writeback,size=64 --cdrom ($ISO)"
+        boot => $"qemu-system-x86_64 -cpu host -smp ($CORES) -m ($MEMORY) -vga qxl -machine type=q35,accel=kvm -enable-kvm -cdrom ($ISO)"
+    }
 }
 
 def update [] {

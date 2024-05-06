@@ -8,6 +8,10 @@ exec rm $WOB && mkfifo $WOB && tail -f $WOB | wob
 
 output * bg ~/.local/share/backgrounds/wallpaper fill
 
+for_window {
+  [title="^Picture in picture$"] floating enable, sticky enable, move position 80ppt 80ppt
+}
+
 bar {
     binding_mode_indicator no
     font "JetBrainsMonoNL 13"
@@ -50,7 +54,7 @@ focus_wrapping no
 tiling_drag_threshold 1
 font JetBrainsMonoNL 13
 titlebar_border_thickness 0
-titlebar_padding 5 0
+titlebar_padding 6 2
 
 client.focused           #3c3c3c #3c3c3c #e3e3e3 #a8c7fa #a8c7fa
 client.focused_tab_title #3c3c3c #3c3c3c #e3e3e3 #a8c7fa #a8c7fa
@@ -103,4 +107,12 @@ bindsym {
     mod4+tab focus next
     mod4+shift+tab focus prev
     mod4+space exec playerctl play-pause
+}
+
+bindsym {
+    mod4+g layout tabbed
+    mod4+y layout splith
+    mod4+n layout splitv
+    mod4+b splitv
+    mod4+j splitv
 }

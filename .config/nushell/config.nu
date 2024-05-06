@@ -714,7 +714,7 @@ $env.config = {
     ]
 }
 
-alias google-chrome-stable = sh ~/.config/google-chrome/start.sh
+alias google-chrome-stable = nu ~/.config/google-chrome/start.nu
 alias google-chrome = google-chrome-stable
 alias dnf = dnf5
 alias ls = ls -a

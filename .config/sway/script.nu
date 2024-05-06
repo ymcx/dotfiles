@@ -18,11 +18,7 @@ def screenshot [ACTION: string] {
     return
   }
   if $ACTION in [copyarea, savearea] {
-    let AREA = slurp | complete
-    if ($AREA | get exit_code) != 0 {
-      return
-    }
-    grim ($AREA | get stdout) - | wl-copy
+    grim -g (slurp) - | wl-copy
   } else {
     grim - | wl-copy
   }

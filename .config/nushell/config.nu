@@ -714,9 +714,8 @@ $env.config = {
     ]
 }
 
-alias google-chrome-stable = nu ~/.config/google-chrome/start.nu
+alias google-chrome-stable = nu ~/.config/scripts/chrome.nu
 alias google-chrome = google-chrome-stable
-alias dnf = dnf5
 alias ls = ls -a
 alias ll = ls -l
 alias cp = cp -r
@@ -726,34 +725,11 @@ def vm [ACTION: string ISO: string NAME?: string] {
     let CORES = nproc
     let MEMORY = awk '/MemTotal/ {printf "%.f", $2/2000}' /proc/meminfo
     match $ACTION {
-        create => $"virt-install --connect qemu:///session --os-variant detect=off --virt-type kvm --arch x86_64 --machine q35 --name ($NAME) --boot uefi --cpu mode=maximum,topology.sockets=1,topology.cores=($CORES),topology.threads=1 --vcpus ($CORES) --memory ($MEMORY) --video virtio --graphics spice,listen=none --channel spicevmc --channel unix,target.type=virtio,target.name=org.qemu.guest_agent.0 --console pty,target.type=virtio --sound default --network type=default,model=virtio --controller type=virtio-serial --controller type=usb,model=none --controller type=scsi,model=virtio-scsi --noautoconsole --input type=keyboard,bus=virtio --input type=tablet,bus=virtio --rng /dev/urandom,model=virtio --disk path=/home/user/.local/share/gnome-boxes/images/($NAME).img,format=raw,bus=virtio,cache=writeback,size=64 --cdrom ($ISO)"
-        boot => $"qemu-system-x86_64 -cpu host -smp ($CORES) -m ($MEMORY) -vga qxl -machine type=q35,accel=kvm -enable-kvm -cdrom ($ISO)"
+        "create" => $"virt-install --connect qemu:///session --os-variant detect=off --virt-type kvm --arch x86_64 --machine q35 --name ($NAME) --boot uefi --cpu mode=maximum,topology.sockets=1,topology.cores=($CORES),topology.threads=1 --vcpus ($CORES) --memory ($MEMORY) --video virtio --graphics spice,listen=none --channel spicevmc --channel unix,target.type=virtio,target.name=org.qemu.guest_agent.0 --console pty,target.type=virtio --sound default --network type=default,model=virtio --controller type=virtio-serial --controller type=usb,model=none --controller type=scsi,model=virtio-scsi --noautoconsole --input type=keyboard,bus=virtio --input type=tablet,bus=virtio --rng /dev/urandom,model=virtio --disk path=/home/user/.local/share/gnome-boxes/images/($NAME).img,format=raw,bus=virtio,cache=writeback,size=64 --cdrom ($ISO)"
+        "boot"   => $"qemu-system-x86_64 -cpu host -smp ($CORES) -m ($MEMORY) -vga qxl -machine type=q35,accel=kvm -enable-kvm -cdrom ($ISO)"
     }
 }
 
 def update [] {
-    print "[DNF]"
-    sudo dnf distro-sync -yq
-
-    print "\n[JDTLS]"
-    let dir = "/home/user/.config/helix/languages/jdtls"
-    let current = ($dir | path join latest)
-    let latest = (http get "https://api.github.com/repos/eclipse-jdtls/eclipse.jdt.ls/tags" | first | get name | str replace "v" "")
-    if ((cat $current) != $latest) {
-      let url = "https://download.eclipse.org/jdtls/milestones"
-      wget -qO - ($url | path join $latest (curl -sL ($url | path join $latest "latest.txt"))) | tar xz -C $dir
-      $latest | save $current -f
-    }
-
-    print "\n[KOTLIN]"
-    let dir = "/home/user/.config/helix/languages/kotlin"
-    let current = ($dir | path join latest)
-    let latest = (http get "https://api.github.com/repos/fwcd/kotlin-language-server/tags" | find -v gradle | first | get name)
-    if ((cat $current) != $latest) {
-        wget -qO - "https://github.com/fwcd/kotlin-language-server/releases/latest/download/server.zip" | bsdtar -xf- -C $dir
-        $latest | save $current -f
-    }
-
-    print "\n[ANDROID]"
-    sdkmanager --update
+    nu ~/.config/scripts/update.nu
 }

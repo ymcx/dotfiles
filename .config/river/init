@@ -1,0 +1,96 @@
+#!/bin/sh
+
+export WOB="$XDG_RUNTIME_DIR/wob.sock"
+export SCRIPT="nu ~/.config/scripts"
+
+systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+systemctl --user start foot-server.socket
+rm "$WOB" && mkfifo "$WOB" && tail -f "$WOB" | wob &
+waybar &
+
+riverctl map -repeat -layout 0 normal Super               Q         close
+riverctl map -repeat -layout 0 normal Super+Shift         Q         spawn "systemctl suspend"
+riverctl map -repeat -layout 0 normal Super               D         spawn "$SCRIPT/volume.nu SINK -"
+riverctl map -repeat -layout 0 normal Super               R         spawn "$SCRIPT/volume.nu SINK +"
+riverctl map -repeat -layout 0 normal Super               W         spawn "$SCRIPT/volume.nu SINK x"
+riverctl map -repeat -layout 0 normal Super+Shift         D         spawn "$SCRIPT/brightness.nu -"
+riverctl map -repeat -layout 0 normal Super+Shift         R         spawn "$SCRIPT/brightness.nu +"
+riverctl map -repeat -layout 0 normal Super+Shift         W         spawn "$SCRIPT/bluetooth.nu"
+riverctl map -repeat -layout 0 normal Super+Control       D         spawn "$SCRIPT/volume.nu SOURCE -"
+riverctl map -repeat -layout 0 normal Super+Control       R         spawn "$SCRIPT/volume.nu SOURCE +"
+riverctl map -repeat -layout 0 normal Super+Control       W         spawn "$SCRIPT/volume.nu SOURCE x"
+
+riverctl map -repeat -layout 0 normal Super               A         spawn "xdg-terminal-exec"
+riverctl map -repeat -layout 0 normal Super               S         spawn "$SCRIPT/chrome.nu"
+riverctl map -repeat -layout 0 normal Super+Shift         S         spawn "$SCRIPT/chrome.nu --incognito"
+riverctl map -repeat -layout 0 normal Super               H         toggle-fullscreen
+riverctl map -repeat -layout 0 normal Super+Shift         H         toggle-float
+riverctl map -repeat -layout 0 normal Super               T         spawn "$SCRIPT/screenshot.nu copyarea"
+riverctl map -repeat -layout 0 normal Super+Shift         T         spawn "$SCRIPT/screenshot.nu savearea"
+riverctl map -repeat -layout 0 normal Super+Control       T         spawn "$SCRIPT/screenshot.nu copyscreen"
+riverctl map -repeat -layout 0 normal Super+Control+Shift T         spawn "$SCRIPT/screenshot.nu savescreen"
+
+riverctl map -repeat -layout 0 normal Super               Z         set-focused-tags    1
+riverctl map -repeat -layout 0 normal Super+Shift         Z         set-view-tags       1
+riverctl map -repeat -layout 0 normal Super+Control       Z         toggle-focused-tags 1
+riverctl map -repeat -layout 0 normal Super+Control+Shift Z         toggle-view-tags    1
+riverctl map -repeat -layout 0 normal Super               X         set-focused-tags    2
+riverctl map -repeat -layout 0 normal Super+Shift         X         set-view-tags       2
+riverctl map -repeat -layout 0 normal Super+Control       X         toggle-focused-tags 2
+riverctl map -repeat -layout 0 normal Super+Control+Shift X         toggle-view-tags    2
+riverctl map -repeat -layout 0 normal Super               M         set-focused-tags    4
+riverctl map -repeat -layout 0 normal Super+Shift         M         set-view-tags       4
+riverctl map -repeat -layout 0 normal Super+Control       M         toggle-focused-tags 4
+riverctl map -repeat -layout 0 normal Super+Control+Shift M         toggle-view-tags    4
+riverctl map -repeat -layout 0 normal Super               C         set-focused-tags    8
+riverctl map -repeat -layout 0 normal Super+Shift         C         set-view-tags       8
+riverctl map -repeat -layout 0 normal Super+Control       C         toggle-focused-tags 8
+riverctl map -repeat -layout 0 normal Super+Control+Shift C         toggle-view-tags    8
+riverctl map -repeat -layout 0 normal Super               V         set-focused-tags    15
+riverctl map -repeat -layout 0 normal Super+Shift         V         set-view-tags       15
+riverctl map -repeat -layout 0 normal Super+Control       V         toggle-focused-tags 15
+riverctl map -repeat -layout 0 normal Super+Control+Shift V         toggle-view-tags    15
+
+riverctl map -repeat -layout 0 normal Super               Left      focus-view left
+riverctl map -repeat -layout 0 normal Super               Right     focus-view right
+riverctl map -repeat -layout 0 normal Super               Up        focus-view up
+riverctl map -repeat -layout 0 normal Super               Down      focus-view down
+riverctl map -repeat -layout 0 normal Super               Page_Up   focus-view previous
+riverctl map -repeat -layout 0 normal Super               Page_Down focus-view next
+riverctl map -repeat -layout 0 normal Super+Shift         Left      swap       left
+riverctl map -repeat -layout 0 normal Super+Shift         Right     swap       right
+riverctl map -repeat -layout 0 normal Super+Shift         Up        swap       up
+riverctl map -repeat -layout 0 normal Super+Shift         Down      swap       down
+riverctl map -repeat -layout 0 normal Super+Shift         Page_Up   swap       previous
+riverctl map -repeat -layout 0 normal Super+Shift         Page_Down swap       next
+
+riverctl map -repeat -layout 0 normal Super               0         send-layout-cmd rivertile "main-ratio  0.5"
+riverctl map -repeat -layout 0 normal Super               Minus     send-layout-cmd rivertile "main-ratio -0.1"
+riverctl map -repeat -layout 0 normal Super               Equal     send-layout-cmd rivertile "main-ratio +0.1"
+riverctl map -repeat -layout 0 normal Super               Space     spawn "playerctl play-pause"
+
+riverctl map-pointer           normal Super               BTN_LEFT  move-view
+riverctl map-pointer           normal Super               BTN_RIGHT resize-view
+
+riverctl rule-add -app-id 'xdg-desktop-portal-gtk' -title 'All Files'          float
+riverctl rule-add -app-id 'xdg-desktop-portal-gtk' -title 'Open File'          float
+riverctl rule-add                                  -title 'Picture in picture' float
+riverctl rule-add                                  -title 'Picture in picture' position 2560 1440
+riverctl rule-add                                  -title 'Picture in picture' tags 15
+riverctl rule-add                                                              ssd
+
+riverctl background-color       0x002b36
+riverctl border-color-focused   0x93a1a1
+riverctl border-color-unfocused 0x586e75
+riverctl border-width 1
+riverctl set-repeat 60 250
+riverctl default-attach-mode bottom
+riverctl focus-follows-cursor normal
+riverctl set-cursor-warp on-focus-change
+riverctl keyboard-layout -options grp:alt_space_toggle us,fi
+riverctl input pointer-1267-47-Elan_Touchpad tap enabled
+riverctl input pointer-1267-47-Elan_Touchpad natural-scroll enabled
+riverctl input pointer-1267-47-Elan_Touchpad disable-while-typing disabled
+
+riverctl default-layout rivertile
+rivertile -view-padding 0 -outer-padding 0 -main-ratio 0.5 &

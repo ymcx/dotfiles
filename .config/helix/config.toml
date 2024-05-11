@@ -1,14 +1,10 @@
 theme = "monokai_pro"
 
 [keys.select]
-C-m   = "toggle_comments"
-tab   = "goto_next_buffer"
-S-tab = "goto_previous_buffer"
+C-S-c   = "toggle_comments"
 
 [keys.normal]
-C-m   = "toggle_comments"
-tab   = "goto_next_buffer"
-S-tab = "goto_previous_buffer"
+C-S-c   = "toggle_comments"
 
 [editor.statusline]
 left = ["file-absolute-path", "spacer", "version-control"]
@@ -32,7 +28,3 @@ bufferline = "always"
 
 [editor.whitespace.render]
 tab = "all"
-
-[editor.whitespace.characters]
-tab    = ">"
-tabpad = "-"

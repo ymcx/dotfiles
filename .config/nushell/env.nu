@@ -15,7 +15,7 @@ $env.PROMPT_INDICATOR = {||}
 $env.PROMPT_INDICATOR_VI_INSERT = {||}
 $env.PROMPT_INDICATOR_VI_NORMAL = {||}
 $env.PROMPT_MULTILINE_INDICATOR = {||}
-$env.PATH = ["/usr/local/bin", "/usr/local/sbin", "/usr/bin", "/usr/sbin", "/home/user/.local/bin"]
+$env.PATH = ["/usr/local/bin", "/usr/local/sbin", "/usr/bin", "/usr/sbin", "/home/user/.local/bin", "/home/user/.cargo/bin"]
 $env.ANDROID_HOME = "/home/user/.android"
 $env.EDITOR = hx
 

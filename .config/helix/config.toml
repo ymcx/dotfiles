@@ -1,10 +1,10 @@
 theme = "monokai_pro"
 
 [keys.select]
-C-S-c   = "toggle_comments"
+C-S-c = "toggle_comments"
 
 [keys.normal]
-C-S-c   = "toggle_comments"
+C-S-c = "toggle_comments"
 
 [editor.statusline]
 left = ["file-absolute-path", "spacer", "version-control"]

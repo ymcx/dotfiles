@@ -5,7 +5,9 @@ export SCRIPT="nu ~/.config/scripts"
 
 systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 systemctl --user start foot-server.socket
-rm "$WOB" && mkfifo "$WOB" && tail -f "$WOB" | wob &
+rm "$WOB"
+mkfifo "$WOB"
+tail -f "$WOB" | wob &
 waybar &
 
 riverctl map -repeat -layout 0 normal Super               Q         close
@@ -53,16 +55,12 @@ riverctl map -repeat -layout 0 normal Super+Control+Shift V         toggle-view-
 
 riverctl map -repeat -layout 0 normal Super               Left      focus-view left
 riverctl map -repeat -layout 0 normal Super               Right     focus-view right
-riverctl map -repeat -layout 0 normal Super               Up        focus-view up
-riverctl map -repeat -layout 0 normal Super               Down      focus-view down
-riverctl map -repeat -layout 0 normal Super               Page_Up   focus-view previous
-riverctl map -repeat -layout 0 normal Super               Page_Down focus-view next
+riverctl map -repeat -layout 0 normal Super               Up        focus-view previous
+riverctl map -repeat -layout 0 normal Super               Down      focus-view next
 riverctl map -repeat -layout 0 normal Super+Shift         Left      swap       left
 riverctl map -repeat -layout 0 normal Super+Shift         Right     swap       right
-riverctl map -repeat -layout 0 normal Super+Shift         Up        swap       up
-riverctl map -repeat -layout 0 normal Super+Shift         Down      swap       down
-riverctl map -repeat -layout 0 normal Super+Shift         Page_Up   swap       previous
-riverctl map -repeat -layout 0 normal Super+Shift         Page_Down swap       next
+riverctl map -repeat -layout 0 normal Super+Shift         Up        swap       previous
+riverctl map -repeat -layout 0 normal Super+Shift         Down      swap       next
 
 riverctl map -repeat -layout 0 normal Super               0         send-layout-cmd rivertile "main-ratio  0.5"
 riverctl map -repeat -layout 0 normal Super               Minus     send-layout-cmd rivertile "main-ratio -0.1"

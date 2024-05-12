@@ -3,11 +3,6 @@ let CORES = nproc
 echo "[FEDORA]"
 sudo dnf distro-sync -yq
     
-echo "\n[COREBOOT]"
-cd ~/Packages/coreboot/util/ectool
-git pull -q
-sudo make install
-
 echo "\n[JAVA]"
 cd ~/Packages/java
 git pull -q

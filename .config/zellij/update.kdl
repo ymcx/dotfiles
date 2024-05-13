@@ -1,0 +1,27 @@
+
+layout {
+    pane split_direction="vertical" {
+        pane {
+            close_on_exit true
+            command "nu"
+            args "-c" "cargo install zellij; sleep 1sec"
+        }
+        pane {
+            close_on_exit true
+            command "nu"
+            args "-c" "sudo dnf distro-sync -y; sleep 1sec"
+        }
+    }
+    pane split_direction="vertical" {
+        pane {
+            close_on_exit true
+            command "nu"
+            args "-c" "nu ~/.config/helix/languages/java/update.nu; sleep 1sec"
+        }
+        pane {
+            close_on_exit true
+            command "nu"
+            args "-c" "nu ~/.config/helix/languages/kotlin/update.nu; sleep 1sec"
+        }
+    }
+}

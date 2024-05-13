@@ -731,5 +731,5 @@ def vm [ACTION: string ISO: string NAME?: string] {
 }
 
 def update [] {
-    nu ~/.config/scripts/update.nu
+    zellij -l ~/.config/zellij/update.kdl
 }

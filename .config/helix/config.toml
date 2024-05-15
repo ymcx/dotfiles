@@ -21,9 +21,9 @@ insert = "bar"
 wrap-around = false
 
 [editor]
-scrolloff  = 0
+scrolloff = 0
 true-color = true
-gutters    = ["diff", "diagnostics", "spacer", "line-numbers", "spacer"]
+gutters = ["diff", "diagnostics", "spacer", "line-numbers", "spacer"]
 bufferline = "always"
 
 [editor.whitespace.render]

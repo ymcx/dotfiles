@@ -1,0 +1,12 @@
+[includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
+    path = /home/user/.git/github
+[includeIf "hasconfig:remote.*.url:git@codeberg.org:*/**"]
+    path = /home/user/.git/codeberg
+[color]
+	ui = auto
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
+[core]
+	filemode = false

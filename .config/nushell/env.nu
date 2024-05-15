@@ -1,9 +1,9 @@
 def prompt [] {
-    let color = (if not ($env.SSH_TTY? | is-empty) or (is-admin) {
-        ansi red_bold
-    } else {
+    let color = if ($env.SSH_TTY? | is-empty) {
         ansi green_bold
-    })
+    } else {
+        ansi red_bold
+    }
     $"($color)($env.PWD)"
 }
 

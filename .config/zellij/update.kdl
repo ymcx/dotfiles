@@ -22,5 +22,10 @@ layout {
             command "nu"
             args "-c" "nu ~/.config/helix/languages/kotlin/update.nu; sleep 1sec"
         }
+        pane {
+            close_on_exit true
+            command "nu"
+            args "-c" "nu ~/.config/helix/languages/zig/update.nu; sleep 1sec"
+        }
     }
 }

@@ -46,3 +46,19 @@ def vm [ACTION: string ISO: string NAME?: string] {
 def update [] {
     zellij -l ~/.config/zellij/update.kdl
 }
+
+def ssh [...args: string] {
+    printf '\033]11;#2e2626\007'
+    try {
+        ^ssh ...$args
+    }
+    printf '\033]11;#2d2a2e\007'
+}
+
+def run0 [...args: string] {
+    printf '\033]11;#2e2626\007'
+    try {
+        ^run0 --background= ...$args
+    }
+    printf '\033]11;#2d2a2e\007'
+}

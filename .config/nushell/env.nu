@@ -1,10 +1,9 @@
 def prompt [] {
-    let color = if ($env.SSH_TTY? | is-empty) {
-        ansi green_bold
-    } else {
-        ansi red_bold
+    match (do -s {$env.PWD | path relative-to $nu.home-path}) {
+        null => $env.PWD
+        "" => "~"
+        $i => ([~ $i] | path join)
     }
-    $"($color)($env.PWD)"
 }
 
 $env.PROMPT_COMMAND = {prompt}

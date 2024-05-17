@@ -3,12 +3,12 @@ layout {
         pane {
             close_on_exit true
             command "nu"
-            args "-c" "cargo install zellij; sleep 1sec"
+            args "-c" "run0 dnf distro-sync -y; sleep 1sec"
         }
         pane {
             close_on_exit true
             command "nu"
-            args "-c" "run0 dnf distro-sync -y; sleep 1sec"
+            args "-c" "cargo install zellij; sleep 1sec"
         }
     }
     pane split_direction="vertical" {

@@ -72,6 +72,7 @@ riverctl map-pointer           normal Super               BTN_RIGHT resize-view
 
 riverctl rule-add -app-id 'xdg-desktop-portal-gtk' -title 'All Files'          float
 riverctl rule-add -app-id 'xdg-desktop-portal-gtk' -title 'Open File'          float
+riverctl rule-add -app-id 'xdg-desktop-portal-gtk' -title 'Open Files'         float
 riverctl rule-add                                  -title 'Picture in picture' float
 riverctl rule-add                                  -title 'Picture in picture' position 2560 1440
 riverctl rule-add                                  -title 'Picture in picture' tags 15

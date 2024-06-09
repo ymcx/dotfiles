@@ -1,8 +1,5 @@
 ignore-empty-password
 daemonize
-hide-keyboard-layout
-disable-caps-lock-text
-font-size=1
 line-uses-inside
 indicator-idle-visible
 
@@ -21,18 +18,18 @@ inside-clear-color=00000000
 inside-color=00000000
 separator-color=00000000
 
-ring-ver-color=ffffff40
-ring-color=ffffff40
-ring-caps-lock-color=ffffff40
-ring-clear-color=ffffff40
-caps-lock-bs-hl-color=ffffff40
-bs-hl-color=ffffff40
-caps-lock-key-hl-color=ffffff40
-key-hl-color=ffffff40
+ring-ver-color=ffffff20
+ring-color=ffffff20
+ring-caps-lock-color=ffffff20
+ring-clear-color=ffffff20
+caps-lock-bs-hl-color=ffffff20
+bs-hl-color=ffffff20
+caps-lock-key-hl-color=ffffff20
+key-hl-color=ffffff20
 
-ring-wrong-color=ffffff80
+ring-wrong-color=ffffff40
 
-color=000000ff
+color=36918dff
 
 indicator-thickness=25
 indicator-radius=50

@@ -1,0 +1,12 @@
+window#waybar {
+  background-color: #000000;
+  border-left:   2px solid #36918d;
+  border-bottom: 2px solid #36918d;
+}
+
+#clock {
+  color: #fcfcfa;
+  font-size: 15px;
+  font-family: Droid Sans;
+  font-weight: Bold;
+}

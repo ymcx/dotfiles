@@ -42,7 +42,7 @@ def vm [ACTION: string NAME: string ISO: string] {
     let CORES = nproc
     let MEMORY = awk '/MemTotal/ {printf "%.f", $2/2000}' /proc/meminfo
     match $ACTION {
-        "create" => (virt-install --vcpus $CORES -n $NAME -r $MEMORY --cdrom $ISO --osinfo require=off --disk size=64,format=raw)
+        "create" => (virt-install --vcpus $CORES -n $NAME -r $MEMORY --cdrom $ISO --osinfo require=off --disk size=32,format=raw)
         "boot"   => (virt-install --vcpus $CORES -n $NAME -r $MEMORY --cdrom $ISO --osinfo require=off --disk none; virsh destroy $NAME; virsh undefine $NAME)
     }
 }
@@ -51,18 +51,10 @@ def update [] {
     zellij -l ~/.config/zellij/update.kdl
 }
 
-def ssh [...args: string] {
-    printf '\033]11;#2e1d1d\007'
+def --wrapped ssh [...args] {
+    printf '\e]11;#330c0c\e\'
     try {
         ^ssh ...$args
     }
-    printf '\033]11;#2d2a2e\007'
-}
-
-def run0 [...args: string] {
-    printf '\033]11;#2e1d1d\007'
-    try {
-        ^run0 --background= ...$args
-    }
-    printf '\033]11;#2d2a2e\007'
+    printf '\e]111\e\'
 }

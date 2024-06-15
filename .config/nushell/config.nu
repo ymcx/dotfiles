@@ -1,11 +1,19 @@
 $env.config = {
+    shell_integration: {
+        osc2: true
+        osc7: true
+        osc8: true
+        osc9_9: true
+        osc133: true
+        osc633: true
+        reset_application_mode: true
+    }
     show_banner: false
     table: {
         index_mode: never
         show_empty: false
         trim: {
             methodology: truncating
-            truncating_suffix: "..."
         }
         header_on_separator: true
     }
@@ -29,27 +37,21 @@ $env.config = {
     footer_mode: "never"
     use_kitty_protocol: true
     highlight_resolved_externals: true
-}
-
-alias google-chrome-stable = nu ~/.config/scripts/chrome.nu
-alias google-chrome = google-chrome-stable
-alias ls = ls -a
-alias ll = ls -l
-alias cp = cp -r
-alias rm = rm -r
-
-def vm [ACTION: string NAME: string ISO: string] {
-    let CORES = nproc
-    let MEMORY = awk '/MemTotal/ {printf "%.f", $2/2000}' /proc/meminfo
-    match $ACTION {
-        "create" => (virt-install --vcpus $CORES -n $NAME -r $MEMORY --cdrom $ISO --osinfo require=off --disk size=32,format=raw)
-        "boot"   => (virt-install --vcpus $CORES -n $NAME -r $MEMORY --cdrom $ISO --osinfo require=off --disk none; virsh destroy $NAME; virsh undefine $NAME)
+    completions: {
+        external: {
+            completer: {|spans|
+                fish --command $'complete "--do-complete=($spans | str join " ")"'
+                | $"value(char tab)description(char newline)" + $in
+                | from tsv --flexible --no-infer
+            }
+        }
     }
 }
 
-def update [] {
-    zellij -l ~/.config/zellij/update.kdl
-}
+alias diff = diff --color
+alias ls = ls -a
+alias cp = cp -r
+alias rm = rm -r
 
 def --wrapped ssh [...args] {
     printf '\e]11;#330c0c\e\'
@@ -58,3 +60,5 @@ def --wrapped ssh [...args] {
     }
     printf '\e]111\e\'
 }
+
+use task.nu

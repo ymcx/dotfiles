@@ -7,12 +7,9 @@ C-S-c = "toggle_comments"
 C-S-c = "toggle_comments"
 
 [editor.statusline]
-left = ["file-absolute-path", "spacer", "version-control"]
-center = ["workspace-diagnostics", "diagnostics"]
-right = ["position", "total-line-numbers", "primary-selection-length", "selections", "mode"]
-mode.normal = "N"
-mode.insert = "I"
-mode.select = "S"
+left = ["file-modification-indicator", "file-base-name"]
+center = ["diagnostics"]
+right = ["selections"]
 
 [editor.cursor-shape]
 insert = "bar"
@@ -21,10 +18,14 @@ insert = "bar"
 wrap-around = false
 
 [editor]
-scrolloff = 0
-true-color = true
+completion-replace = true
+scrolloff = 1
 gutters = ["diff", "diagnostics", "spacer", "line-numbers", "spacer"]
-bufferline = "always"
+auto-format = false
+auto-save = true
+
+[editor.lsp]
+display-inlay-hints = true
 
 [editor.whitespace.render]
 tab = "all"

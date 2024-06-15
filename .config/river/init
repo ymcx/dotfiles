@@ -1,13 +1,9 @@
 #!/bin/sh
 
-export WOB="$XDG_RUNTIME_DIR/wob.sock"
 export SCRIPT="nu ~/.config/scripts"
 
-systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-systemctl --user start foot-server.socket
-rm "$WOB"
-mkfifo "$WOB"
-tail -f "$WOB" | wob &
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_DESKTOP XDG_SESSION_TYPE
+rivertile -view-padding 0 -outer-padding 0 -main-ratio 0.5 &
 waybar &
 
 riverctl map -repeat -layout 0 normal Super               Q         close
@@ -23,8 +19,8 @@ riverctl map -repeat -layout 0 normal Super+Control       R         spawn "$SCRI
 riverctl map -repeat -layout 0 normal Super+Control       W         spawn "$SCRIPT/volume.nu SOURCE x"
 
 riverctl map -repeat -layout 0 normal Super               A         spawn "xdg-terminal-exec"
-riverctl map -repeat -layout 0 normal Super               S         spawn "$SCRIPT/chrome.nu"
-riverctl map -repeat -layout 0 normal Super+Shift         S         spawn "$SCRIPT/chrome.nu --incognito"
+riverctl map -repeat -layout 0 normal Super               S         spawn "chromium"
+riverctl map -repeat -layout 0 normal Super+Shift         S         spawn "chromium --incognito"
 riverctl map -repeat -layout 0 normal Super               H         toggle-fullscreen
 riverctl map -repeat -layout 0 normal Super+Shift         H         toggle-float
 riverctl map -repeat -layout 0 normal Super               T         spawn "$SCRIPT/screenshot.nu copyarea"
@@ -53,14 +49,14 @@ riverctl map -repeat -layout 0 normal Super+Shift         V         set-view-tag
 riverctl map -repeat -layout 0 normal Super+Control       V         toggle-focused-tags 15
 riverctl map -repeat -layout 0 normal Super+Control+Shift V         toggle-view-tags    15
 
-riverctl map -repeat -layout 0 normal Super               Left      focus-view left
-riverctl map -repeat -layout 0 normal Super               Right     focus-view right
-riverctl map -repeat -layout 0 normal Super               Up        focus-view previous
-riverctl map -repeat -layout 0 normal Super               Down      focus-view next
-riverctl map -repeat -layout 0 normal Super+Shift         Left      swap       left
-riverctl map -repeat -layout 0 normal Super+Shift         Right     swap       right
-riverctl map -repeat -layout 0 normal Super+Shift         Up        swap       previous
-riverctl map -repeat -layout 0 normal Super+Shift         Down      swap       next
+riverctl map -repeat -layout 0 normal Super               Left      focus-view -skip-floating left
+riverctl map -repeat -layout 0 normal Super               Right     focus-view -skip-floating right
+riverctl map -repeat -layout 0 normal Super               Up        focus-view -skip-floating previous
+riverctl map -repeat -layout 0 normal Super               Down      focus-view -skip-floating next
+riverctl map -repeat -layout 0 normal Super+Shift         Left      swap                      left
+riverctl map -repeat -layout 0 normal Super+Shift         Right     swap                      right
+riverctl map -repeat -layout 0 normal Super+Shift         Up        swap                      previous
+riverctl map -repeat -layout 0 normal Super+Shift         Down      swap                      next
 
 riverctl map -repeat -layout 0 normal Super               0         send-layout-cmd rivertile "main-ratio  0.5"
 riverctl map -repeat -layout 0 normal Super               Minus     send-layout-cmd rivertile "main-ratio -0.1"
@@ -70,14 +66,11 @@ riverctl map -repeat -layout 0 normal Super               Space     spawn "playe
 riverctl map-pointer           normal Super               BTN_LEFT  move-view
 riverctl map-pointer           normal Super               BTN_RIGHT resize-view
 
-riverctl rule-add -app-id 'xdg-desktop-portal-gtk' float
-riverctl rule-add -title  'Picture in picture'     float
-riverctl rule-add -title  'Picture in picture'     position 2560 1440
-riverctl rule-add -title  'Picture in picture'     tags 15
+riverctl rule-add -title 'Picture in picture' float
+riverctl rule-add -title 'Picture in picture' position 2560 1440
+riverctl rule-add                             ssd
 
-riverctl border-color-focused   0x36918d
-riverctl border-color-unfocused 0x36918d
-riverctl border-width 1
+riverctl border-width 0
 riverctl set-repeat 60 300
 riverctl default-attach-mode bottom
 riverctl focus-follows-cursor normal
@@ -86,8 +79,4 @@ riverctl keyboard-layout -options grp:alt_space_toggle us,fi
 riverctl input pointer-1267-47-Elan_Touchpad tap enabled
 riverctl input pointer-1267-47-Elan_Touchpad natural-scroll enabled
 riverctl input pointer-1267-47-Elan_Touchpad disable-while-typing disabled
-
 riverctl default-layout rivertile
-rivertile -view-padding 0 -outer-padding 1 -main-ratio 0.5 &
-
-swaybg -i ~/.local/share/backgrounds/wallpaper -c 36918d -m center &

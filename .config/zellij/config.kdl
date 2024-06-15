@@ -9,28 +9,13 @@ keybinds clear-defaults=true {
     }
 }
 
-scroll_buffer_size 1000
-on_force_close "quit"
-pane_frames false
-default_layout "compact"
-mouse_mode false
-disable_session_metadata true
-session_serialization false
-pane_viewport_serialization false
-auto_layout false
-
-themes {
-    default {
-        black   0
-        green   2
-        white   2
-        fg      8
-        bg      8
-        red     8
-        yellow  8
-        blue    8
-        magenta 8
-        cyan    8
-        orange  8
+ui {
+    pane_frames {
+        hide_session_name true
     }
 }
+
+on_force_close "quit"
+pane_frames false
+default_layout "tabbed"
+mouse_mode false

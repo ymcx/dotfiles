@@ -24,8 +24,5 @@ gutters = ["diff", "diagnostics", "spacer", "line-numbers", "spacer"]
 auto-format = false
 auto-save = true
 
-[editor.lsp]
-display-inlay-hints = true
-
 [editor.whitespace.render]
 tab = "all"

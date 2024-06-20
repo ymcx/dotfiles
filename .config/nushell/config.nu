@@ -53,12 +53,4 @@ alias ls = ls -a
 alias cp = cp -r
 alias rm = rm -r
 
-def --wrapped ssh [...args] {
-    printf '\e]11;#330c0c\e\'
-    try {
-        ^ssh ...$args
-    }
-    printf '\e]111\e\'
-}
-
 use task.nu

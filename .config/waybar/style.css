@@ -1,9 +1,9 @@
 window#waybar {
-  background-color: #1f2020;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 #clock {
-  color: #c7c7c7;
-  font-size: 15px;
-  font-family: Cantarell;
+  color: #fcfcfa;
+  font-size: 17px;
+  font-family: JetBrainsMonoNL;
 }

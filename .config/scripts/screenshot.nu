@@ -1,3 +1,5 @@
+#!/usr/bin/nu
+
 def paste [] {
   wl-paste | save ("~/Pictures" | path join (date now | format date "%s%3f.png"))
 }

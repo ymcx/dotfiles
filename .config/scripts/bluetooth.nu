@@ -1,3 +1,5 @@
+#!/usr/bin/nu
+
 def main [] {
   if (bluetoothctl show | awk "/Powered/ {print $2}") == no {
     sudo thinkled 134

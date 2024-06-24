@@ -1,3 +1,5 @@
+#!/usr/bin/nu
+
 def main [TYPE: string ACTION: string] {
   match $ACTION {
     "x" => {

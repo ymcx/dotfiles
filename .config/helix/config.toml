@@ -9,7 +9,7 @@ C-S-c = "toggle_comments"
 [editor.statusline]
 left = ["file-modification-indicator", "file-base-name"]
 center = ["diagnostics"]
-right = ["selections"]
+right = ["position", "selections"]
 
 [editor.cursor-shape]
 insert = "bar"

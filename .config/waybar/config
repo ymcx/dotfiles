@@ -1,6 +1,8 @@
 {
-  "modules-right": ["clock"],
-  "margin-right": 20,
-  "margin-top": 18,
+  "height": 40,
+  "modules-center": ["clock"],
+  "margin-top": 10,
+  "margin-right": 10,
+  "margin-left": 1828,
   "mode": "overlay"
 }

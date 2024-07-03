@@ -17,5 +17,5 @@ ui {
 
 on_force_close "quit"
 pane_frames false
-default_layout "tabbed"
+default_layout "compact"
 mouse_mode false

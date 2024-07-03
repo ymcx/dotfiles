@@ -52,5 +52,3 @@ alias diff = diff --color
 alias ls = ls -a
 alias cp = cp -r
 alias rm = rm -r
-
-use task.nu

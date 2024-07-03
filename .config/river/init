@@ -3,7 +3,7 @@
 export SCRIPT="~/.config/scripts"
 
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_DESKTOP XDG_SESSION_TYPE
-rivertile -view-padding 0 -outer-padding 0 -main-ratio 0.5 &
+river-bsp-layout --reverse &
 waybar &
 
 riverctl map -repeat -layout 0 normal Super               Q         close
@@ -45,19 +45,13 @@ riverctl map -repeat -layout 0 normal Super+Control+Shift C         toggle-view-
 
 riverctl map -repeat -layout 0 normal Super               Left      focus-view -skip-floating left
 riverctl map -repeat -layout 0 normal Super               Right     focus-view -skip-floating right
-riverctl map -repeat -layout 0 normal Super               Up        focus-view -skip-floating previous
-riverctl map -repeat -layout 0 normal Super               Down      focus-view -skip-floating next
+riverctl map -repeat -layout 0 normal Super               Up        focus-view -skip-floating up
+riverctl map -repeat -layout 0 normal Super               Down      focus-view -skip-floating down
 riverctl map -repeat -layout 0 normal Super+Shift         Left      swap                      left
 riverctl map -repeat -layout 0 normal Super+Shift         Right     swap                      right
-riverctl map -repeat -layout 0 normal Super+Shift         Up        swap                      previous
-riverctl map -repeat -layout 0 normal Super+Shift         Down      swap                      next
+riverctl map -repeat -layout 0 normal Super+Shift         Up        swap                      up
+riverctl map -repeat -layout 0 normal Super+Shift         Down      swap                      down
 
-riverctl map -repeat -layout 0 normal Super               0         send-layout-cmd rivertile "main-ratio  0.5"
-riverctl map -repeat -layout 0 normal Super               Minus     send-layout-cmd rivertile "main-ratio -0.1"
-riverctl map -repeat -layout 0 normal Super               Equal     send-layout-cmd rivertile "main-ratio +0.1"
-riverctl map -repeat -layout 0 normal Super+Shift         0         send-layout-cmd rivertile "main-count  1"
-riverctl map -repeat -layout 0 normal Super+Shift         Minus     send-layout-cmd rivertile "main-count -1"
-riverctl map -repeat -layout 0 normal Super+Shift         Equal     send-layout-cmd rivertile "main-count +1"
 riverctl map -repeat -layout 0 normal Super               Space     spawn "playerctl play-pause"
 
 riverctl map-pointer           normal Super               BTN_LEFT  move-view
@@ -67,14 +61,12 @@ riverctl rule-add -title 'Picture in picture' float
 riverctl rule-add -title 'Picture in picture' position 2560 1440
 riverctl rule-add                             ssd
 
-riverctl border-width 10
-riverctl background-color       0x221f22
-riverctl border-color-unfocused 0x221f22
-riverctl border-color-focused   0x403e41
+riverctl border-width 0
 riverctl set-repeat 60 300
 riverctl focus-follows-cursor normal
 riverctl set-cursor-warp on-focus-change
 riverctl keyboard-layout -options grp:alt_space_toggle us,fi
 riverctl input "*" tap enabled
 riverctl input "*" disable-while-typing disabled
-riverctl default-layout rivertile
+riverctl input "pointer-1267-47-Elan_Touchpad" natural-scroll enabled
+riverctl default-layout bsp-layout

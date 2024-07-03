@@ -1,8 +1,5 @@
 {
-  "height": 40,
-  "modules-center": ["clock"],
-  "margin-top": 10,
-  "margin-right": 10,
-  "margin-left": 1828,
+  "modules-right": ["clock"],
+  "margin-top": -2,
   "mode": "overlay"
 }

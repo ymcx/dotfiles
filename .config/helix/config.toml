@@ -9,7 +9,7 @@ C-S-c = "toggle_comments"
 [editor.statusline]
 left = ["file-modification-indicator", "file-base-name"]
 center = ["diagnostics"]
-right = ["position", "selections"]
+right = ["position"]
 
 [editor.cursor-shape]
 insert = "bar"
@@ -23,6 +23,3 @@ scrolloff = 1
 gutters = ["diff", "diagnostics", "spacer", "line-numbers", "spacer"]
 auto-format = false
 auto-save = true
-
-[editor.whitespace.render]
-tab = "all"

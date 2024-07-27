@@ -1,15 +1,9 @@
-theme = "monokai_pro"
-
-[keys.select]
-C-S-c = "toggle_comments"
-
-[keys.normal]
-C-S-c = "toggle_comments"
+theme = "adwaita-dark-fix"
 
 [editor.statusline]
-left = ["file-modification-indicator", "file-base-name"]
-center = ["diagnostics"]
-right = ["position"]
+left = []
+center = []
+right = []
 
 [editor.cursor-shape]
 insert = "bar"
@@ -20,6 +14,15 @@ wrap-around = false
 [editor]
 completion-replace = true
 scrolloff = 1
-gutters = ["diff", "diagnostics", "spacer", "line-numbers", "spacer"]
 auto-format = false
-auto-save = true
+true-color = true
+bufferline = "always"
+
+[editor.file-picker]
+hidden = false
+
+[editor.gutters]
+layout = ["diff", "line-numbers", "spacer"]
+
+[editor.gutters.line-numbers]
+min-width = 4

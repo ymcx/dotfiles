@@ -1,6 +1,0 @@
-inherits = "adwaita-dark"
-
-"ui.statusline" = { fg = "light_4", bg = "libadwaita_dark" }
-
-[palette]
-libadwaita_dark = "#1f1f1f"

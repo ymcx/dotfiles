@@ -1,9 +1,9 @@
-theme = "adwaita-dark-fix"
+theme = "nord-fix"
 
 [editor.statusline]
-left = []
-center = []
-right = []
+left = ["file-absolute-path", "version-control"]
+center = ["diagnostics"]
+right = ["position", "primary-selection-length", "selections", "total-line-numbers"]
 
 [editor.cursor-shape]
 insert = "bar"
@@ -13,13 +13,9 @@ wrap-around = false
 
 [editor]
 completion-replace = true
-scrolloff = 1
+scrolloff = 0
 auto-format = false
-true-color = true
 bufferline = "always"
-
-[editor.file-picker]
-hidden = false
 
 [editor.gutters]
 layout = ["diff", "line-numbers", "spacer"]

@@ -1,0 +1,3 @@
+inherits = "nord"
+
+"ui.bufferline.active" = { fg = "nord5", bg = "nord0" }

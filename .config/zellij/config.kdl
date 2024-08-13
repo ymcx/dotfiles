@@ -1,0 +1,22 @@
+keybinds clear-defaults=true {
+    normal {
+        bind "Ctrl n" { GoToNextTab; }
+        bind "Ctrl p" { GoToPreviousTab; }
+        bind "Ctrl q" { Quit; }
+        bind "Ctrl t" { NewTab; }
+        bind "Ctrl w" { CloseTab; }
+    }
+}
+
+ui {
+    pane_frames {
+        hide_session_name true
+    }
+}
+
+on_force_close "quit"
+simplified_ui true
+pane_frames false
+theme "nord"
+session_serialization false
+disable_session_metadata true

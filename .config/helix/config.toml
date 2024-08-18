@@ -1,12 +1,9 @@
 theme = "nord-fix"
 
 [editor.statusline]
-left = ["file-absolute-path", "version-control"]
+left = ["mode", "file-absolute-path"]
 center = ["diagnostics"]
 right = ["position", "primary-selection-length", "selections", "total-line-numbers"]
-
-[editor.cursor-shape]
-insert = "bar"
 
 [editor.search]
 wrap-around = false
@@ -16,6 +13,7 @@ completion-replace = true
 scrolloff = 0
 auto-format = false
 bufferline = "always"
+color-modes = true
 
 [editor.gutters]
 layout = ["diff", "line-numbers", "spacer"]

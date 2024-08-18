@@ -21,8 +21,8 @@ $env.config = {
         format: "b"
     }
     cursor_shape: {
-        emacs: line
-        vi_insert: line
+        emacs: block
+        vi_insert: block
         vi_normal: block
     }
     history: {

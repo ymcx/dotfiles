@@ -1,4 +1,4 @@
-theme = "nord-fix"
+theme = "nord"
 
 [editor.statusline]
 left = ["mode", "file-absolute-path"]

@@ -1,8 +1,0 @@
-/* symlinked to ~/.config/gtk-3.0 */
-
-decoration,
-.csd .titlebar,
-.csd {
-  border-radius: 0;
-  box-shadow: none;
-}

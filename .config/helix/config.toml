@@ -1,4 +1,4 @@
-theme = "nord"
+theme = "jetbrains_dark_fix"
 
 [editor.statusline]
 left = ["mode", "file-absolute-path"]

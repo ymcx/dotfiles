@@ -2,13 +2,9 @@ $env.config = {
     shell_integration: {
         osc2: true
         osc7: true
-        osc8: true
-        osc133: true
     }
-    use_kitty_protocol: true
     show_banner: false
     table: {
-        show_empty: false
         trim: {
             methodology: truncating
             truncating_suffix: "..."

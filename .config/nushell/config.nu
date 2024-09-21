@@ -30,6 +30,7 @@ $env.config = {
 }
 
 alias diff = diff --color
+alias dnf = dnf5
 alias ls = ls -a
 alias cp = cp -r
 alias rm = rm -r

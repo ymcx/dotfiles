@@ -1,0 +1,4 @@
+inherits = "adwaita-dark"
+
+[palette]
+libadwaita_dark = "#1E1E1E"

@@ -1,4 +1,4 @@
-theme = "jetbrains_dark_fix"
+theme = "adwaita-dark-fix"
 
 [editor.statusline]
 left = ["mode", "file-absolute-path"]
@@ -21,3 +21,6 @@ layout = ["diff", "line-numbers", "spacer"]
 
 [editor.gutters.line-numbers]
 min-width = 4
+
+[editor.auto-save]
+focus-lost = true

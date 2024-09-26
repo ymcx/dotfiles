@@ -16,11 +16,6 @@ $env.config = {
     filesize: {
         format: "b"
     }
-    cursor_shape: {
-        emacs: block
-        vi_insert: block
-        vi_normal: block
-    }
     history: {
         file_format: "sqlite"
         isolation: true
@@ -29,8 +24,8 @@ $env.config = {
     highlight_resolved_externals: true
 }
 
-alias diff = diff --color
-alias dnf = dnf5
+alias diff = diff --color=always
+alias zip = ^zip -r
 alias ls = ls -a
 alias cp = cp -r
 alias rm = rm -r

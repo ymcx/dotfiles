@@ -9,12 +9,9 @@ right = ["position", "primary-selection-length", "selections", "total-line-numbe
 wrap-around = false
 
 [editor]
-completion-replace = true
-scrolloff = 0
 auto-format = false
 bufferline = "always"
 color-modes = true
-true-color = true
 
 [editor.gutters]
 layout = ["diff", "line-numbers", "spacer"]

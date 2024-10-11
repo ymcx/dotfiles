@@ -1,7 +1,7 @@
-theme = "adwaita-dark-fix"
+theme = "nord"
 
 [editor.statusline]
-left = ["mode", "file-absolute-path"]
+left = ["mode", "file-name"]
 center = ["diagnostics"]
 right = ["position", "primary-selection-length", "selections", "total-line-numbers"]
 
@@ -9,6 +9,7 @@ right = ["position", "primary-selection-length", "selections", "total-line-numbe
 wrap-around = false
 
 [editor]
+completion-replace = true
 auto-format = false
 bufferline = "always"
 color-modes = true

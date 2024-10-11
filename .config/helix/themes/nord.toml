@@ -1,0 +1,6 @@
+inherits = "nord"
+
+"ui.statusline.insert" = { fg = "nord1", bg = "nord4" }
+"ui.statusline.normal" = { fg = "nord4", bg = "nord1" }
+"ui.statusline.select" = { fg = "nord4", bg = "nord1" }
+"ui.bufferline.active" = { fg = "nord5", bg = "nord0" }

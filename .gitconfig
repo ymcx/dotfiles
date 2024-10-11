@@ -1,7 +1,5 @@
 [includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
 	path = /home/user/.ssh/github.gitconfig
-[includeIf "hasconfig:remote.*.url:git@codeberg.org:*/**"]
-	path = /home/user/.ssh/codeberg.gitconfig
 [gpg]
 	format = ssh
 [commit]

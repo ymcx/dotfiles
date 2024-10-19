@@ -35,3 +35,7 @@ alias zip = ^zip -r
 alias ls = ls -a
 alias cp = cp -r
 alias rm = rm -r
+
+def --wrapped disown [...args] {
+    sh -c '"$@" >/dev/null 2>&1 &' $args.0 ...$args
+}

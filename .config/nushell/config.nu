@@ -16,6 +16,13 @@ $env.config = {
             truncating_suffix: "..."
         }
     }
+    completions: {
+        external: {
+            completer: {|spans|
+                carapace $spans.0 nushell ...$spans | from json
+            }
+        }
+    }
     datetime_format: {
         table: "%d/%m/%y %H:%M"
     }
@@ -30,9 +37,9 @@ $env.config = {
     highlight_resolved_externals: true
 }
 
+alias ncplayer = ncplayer -q -s scalehi
 alias diff = diff --color=always
-alias zip = ^zip -r
-alias ls = ls -a
+alias ls = ls -as
 alias cp = cp -r
 alias rm = rm -r
 

@@ -1,10 +1,7 @@
-[includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
-	path = /home/user/.ssh/github.gitconfig
+[user]
+	email = 89810988+ymcx@users.noreply.github.com
+	signingkey = /home/user/.ssh/github.pub
 [gpg]
 	format = ssh
 [commit]
 	gpgsign = true
-[tag]
-	gpgsign = true
-[color]
-	ui = auto

@@ -1,21 +1,35 @@
 theme = "nord"
 
 [editor.statusline]
-left = ["mode", "file-name"]
+left = ["selections", "primary-selection-length"]
 center = ["diagnostics"]
-right = ["position", "primary-selection-length", "selections", "total-line-numbers"]
+right = ["position", "total-line-numbers"]
 
 [editor.search]
 wrap-around = false
 
 [editor]
+idle-timeout = 0
+completion-timeout = 0
+completion-trigger-len = 1
 completion-replace = true
 auto-format = false
 bufferline = "always"
 color-modes = true
 
+[editor.cursor-shape]
+insert = "bar"
+
+[editor.soft-wrap]
+enable = true
+max-wrap = 0
+wrap-indicator = ""
+
+[editor.smart-tab]
+supersede-menu = true
+
 [editor.gutters]
-layout = ["diff", "line-numbers", "spacer"]
+layout = ["diff", "diagnostics", "line-numbers", "spacer"]
 
 [editor.gutters.line-numbers]
 min-width = 4

@@ -37,6 +37,7 @@ $env.config = {
     highlight_resolved_externals: true
 }
 
+alias ffplay = ffplay -nodisp -autoexit -loglevel warning
 alias ncplayer = ncplayer -q -s scalehi
 alias diff = diff --color=always
 alias ls = ls -as
@@ -45,4 +46,16 @@ alias rm = rm -r
 
 def --wrapped disown [...args] {
     sh -c '"$@" >/dev/null 2>&1 &' $args.0 ...$args
+}
+
+def play [] {
+    for $i in (ls | shuffle) {
+        ffplay ($i | get name)
+    }
+}
+
+def pdf [FILE: string] {
+    let SUM = sha256sum $FILE | head -c 64
+    pdftoppm -jpeg $FILE /tmp/($SUM)
+    ncplayer /tmp/($SUM)*.jpg
 }

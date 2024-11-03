@@ -38,7 +38,7 @@ $env.config = {
 }
 
 alias ffplay = ffplay -nodisp -autoexit -loglevel warning
-alias ncplayer = ncplayer -q -s scalehi
+alias chafa = chafa --dither=diffusion --fit-width
 alias diff = diff --color=always
 alias ls = ls -as
 alias cp = cp -r
@@ -56,6 +56,9 @@ def play [] {
 
 def pdf [FILE: string] {
     let SUM = sha256sum $FILE | head -c 64
-    pdftoppm -jpeg $FILE /tmp/($SUM)
-    ncplayer /tmp/($SUM)*.jpg
+    if not ($"/tmp/($SUM)" | path exists) {
+        mkdir $"/tmp/($SUM)"
+        pdftoppm -jpeg $FILE /tmp/($SUM)/
+    }
+    chafa /tmp/($SUM)/*
 }

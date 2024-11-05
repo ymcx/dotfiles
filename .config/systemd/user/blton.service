@@ -1,0 +1,9 @@
+[Unit]
+Description=BLTON (service)
+
+[Service]
+Type=oneshot
+ExecStartPre=bluetoothctl power on
+ExecStart=bluetoothctl connect 00:0A:45:03:53:6B
+ExecStartPost=systemctl --user start bltchck.timer
+SuccessExitStatus=1

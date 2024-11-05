@@ -37,7 +37,7 @@ $env.config = {
     highlight_resolved_externals: true
 }
 
-alias ffplay = ffplay -nodisp -autoexit -loglevel warning
+alias ffplay = ffplay -nodisp -autoexit -v warning
 alias chafa = chafa --dither=diffusion --fit-width
 alias diff = diff --color=always
 alias ls = ls -as
@@ -48,14 +48,18 @@ def --wrapped disown [...args] {
     sh -c '"$@" >/dev/null 2>&1 &' $args.0 ...$args
 }
 
-def play [] {
-    for $i in (ls | shuffle) {
-        ffplay ($i | get name)
+def "ffplay -all" [] {
+    loop {
+        for $i in (ls -m | where type =~ "audio" | get name | shuffle) {
+            print -n ($i | str substring 0..70 | fill -w 71)
+            print -n "\r"
+            ffplay $i
+        }
     }
 }
 
-def pdf [FILE: string] {
-    let SUM = sha256sum $FILE | head -c 64
+def "chafa --pdf" [FILE: string] {
+    let SUM = sha256sum $FILE | str substring 0..63
     if not ($"/tmp/($SUM)" | path exists) {
         mkdir $"/tmp/($SUM)"
         pdftoppm -jpeg $FILE /tmp/($SUM)/

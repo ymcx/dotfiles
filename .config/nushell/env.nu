@@ -15,6 +15,7 @@ $env.EDITOR = "hx"
 $env.COLORTERM = "truecolor"
 $env.ANDROID_HOME = "/home/user/.android/home"
 $env.PATH = ["/usr/local/bin", "/usr/local/sbin", "/usr/bin", "/usr/sbin", "/home/user/.local/bin"]
-$env.CARAPACE_MATCH = 1
+$env.SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh"
+
 
 open ~/.config/nushell/nord.toml | load-env

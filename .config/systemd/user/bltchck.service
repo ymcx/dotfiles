@@ -1,8 +1,0 @@
-[Unit]
-Description=BLTCHCK (service)
-
-[Service]
-Type=oneshot
-ExecStartPre=bash -c '[ -z "$(bluetoothctl devices Connected)" ]'
-ExecStart=bluetoothctl power off
-ExecStartPost=systemctl --user stop bltchck.timer

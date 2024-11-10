@@ -1,5 +1,4 @@
 loop {
-  clear -a
-  print -n (date now | format date "%R")
+  print -n (date now | format date "\r%R")
   sleep 1min
 }

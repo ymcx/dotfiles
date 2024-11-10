@@ -19,7 +19,9 @@ $env.config = {
     completions: {
         external: {
             completer: {|spans|
-                carapace $spans.0 nushell ...$spans | from json
+                fish -c $'complete "-C ($spans | str join " ")"'
+                | "value\tdescription\n" + $in
+                | from tsv --flexible --no-infer --trim all
             }
         }
     }

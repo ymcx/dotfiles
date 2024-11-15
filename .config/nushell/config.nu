@@ -16,15 +16,6 @@ $env.config = {
             truncating_suffix: "..."
         }
     }
-    completions: {
-        external: {
-            completer: {|spans|
-                fish -c $'complete "-C ($spans | str join " ")"'
-                | "value\tdescription\n" + $in
-                | from tsv --flexible --no-infer --trim all
-            }
-        }
-    }
     datetime_format: {
         table: "%d/%m/%y %H:%M"
     }
@@ -39,12 +30,13 @@ $env.config = {
     highlight_resolved_externals: true
 }
 
-alias play = nu ~/.config/scripts/play.nu
-alias view = nu ~/.config/scripts/view.nu
-alias disown = nu ~/.config/scripts/disown.nu
-alias ffplay = ffplay -nodisp -autoexit -v warning
 alias chafa = chafa --dither=diffusion
 alias diff = diff --color=always
+alias zip = ^zip -r
 alias ls = ls -as
 alias cp = cp -r
 alias rm = rm -r
+
+def --wrapped disown [...args] {
+  sh -c '"$@" >/dev/null 2>&1 &' $args.0 ...$args
+}

@@ -1,0 +1,7 @@
+inherits = "jetbrains_dark"
+
+"ui.cursor" = { fg = "blue34", bg = "blue196" }
+"ui.gutter.selected" = {}
+
+[palette]
+blue34 = "#1b1b1b"

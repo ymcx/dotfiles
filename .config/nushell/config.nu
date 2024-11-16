@@ -1,13 +1,4 @@
 $env.config = {
-    shell_integration: {
-        osc2: true
-        osc7: true
-        osc8: true
-        osc9_9: false
-        osc133: true
-        osc633: false
-        reset_application_mode: true
-    }
     use_kitty_protocol: true
     show_banner: false
     table: {
@@ -30,7 +21,6 @@ $env.config = {
     highlight_resolved_externals: true
 }
 
-alias chafa = chafa --dither=diffusion
 alias diff = diff --color=always
 alias zip = ^zip -r
 alias ls = ls -as

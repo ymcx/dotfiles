@@ -1,7 +1,7 @@
-theme = "jetbrains_dark_fix"
+theme = "nord"
 
 [editor.statusline]
-left = ["file-base-name", "file-modification-indicator"]
+left = ["mode", "file-base-name", "file-modification-indicator"]
 center = ["diagnostics"]
 right = ["position", "total-line-numbers"]
 
@@ -9,21 +9,14 @@ right = ["position", "total-line-numbers"]
 wrap-around = false
 
 [editor]
+color-modes = true
 scrolloff = 3
-scroll-lines = 1
 shell = ["nu", "-c"]
-idle-timeout = 0
 completion-timeout = 0
 completion-trigger-len = 1
 completion-replace = true
 auto-format = false
 gutters = ["diff", "diagnostics", "line-numbers", "spacer"]
-
-[editor.cursor-shape]
-insert = "bar"
-
-[editor.smart-tab]
-supersede-menu = true
 
 [editor.auto-save]
 focus-lost = true

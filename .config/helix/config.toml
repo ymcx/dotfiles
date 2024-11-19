@@ -18,5 +18,8 @@ completion-replace = true
 auto-format = false
 gutters = ["diff", "diagnostics", "line-numbers", "spacer"]
 
+[editor.soft-wrap]
+wrap-indicator = ""
+
 [editor.auto-save]
 focus-lost = true

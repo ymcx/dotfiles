@@ -1,0 +1,6 @@
+inherits = "adwaita-dark"
+
+"ui.linenr.selected" = { fg = "light_7", modifiers = ["bold"] }
+
+[palette]
+libadwaita_dark = "#1B1B1B"

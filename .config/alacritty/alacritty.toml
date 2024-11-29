@@ -1,0 +1,12 @@
+[window]
+decorations = "None"
+
+[font]
+normal.family = "JetBrainsMonoNL"
+size = 13
+
+[keyboard]
+bindings = [{ key = "N", mods = "Control|Shift", action = "CreateNewWindow" }]
+
+[colors.primary]
+background = "#1b1b1b"

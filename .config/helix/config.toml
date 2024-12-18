@@ -1,7 +1,7 @@
 theme = "adwaita-dark"
 
 [editor.statusline]
-left = ["mode", "file-base-name", "file-modification-indicator"]
+left = ["mode", "file-name", "file-modification-indicator"]
 center = ["diagnostics"]
 right = ["position", "total-line-numbers"]
 

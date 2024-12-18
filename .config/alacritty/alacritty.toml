@@ -4,6 +4,8 @@ decorations = "None"
 [font]
 normal.family = "JetBrainsMonoNL"
 size = 13
+offset.y = -4
+glyph_offset.y = -2
 
 [keyboard]
 bindings = [{ key = "N", mods = "Control|Shift", action = "CreateNewWindow" }]

@@ -1,4 +1,4 @@
-theme = "adwaita-dark"
+theme = "monokai_pro"
 
 [editor.statusline]
 left = ["mode", "file-name", "file-modification-indicator"]
@@ -14,7 +14,6 @@ scrolloff = 3
 shell = ["nu", "-c"]
 completion-timeout = 0
 completion-trigger-len = 1
-completion-replace = true
 auto-format = false
 gutters = ["diff", "diagnostics", "line-numbers", "spacer"]
 

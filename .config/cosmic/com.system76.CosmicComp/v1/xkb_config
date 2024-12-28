@@ -1,0 +1,9 @@
+(
+    rules: "",
+    model: "pc105+inet",
+    layout: "us,fi",
+    variant: "workman,",
+    options: Some("grp:alt_space_toggle"),
+    repeat_delay: 250,
+    repeat_rate: 60,
+)

@@ -1,20 +1,17 @@
-theme = "monokai_pro"
+theme = "nord"
 
 [editor.statusline]
 left = ["mode", "file-name", "file-modification-indicator"]
 center = ["diagnostics"]
-right = ["position", "total-line-numbers"]
+right = ["selections", "position"]
 
 [editor.search]
 wrap-around = false
 
 [editor]
 color-modes = true
-scrolloff = 3
+scrolloff = 0
 shell = ["nu", "-c"]
-completion-timeout = 0
-completion-trigger-len = 1
-auto-format = false
 gutters = ["diff", "diagnostics", "line-numbers", "spacer"]
 
 [editor.soft-wrap]

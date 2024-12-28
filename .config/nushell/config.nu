@@ -10,6 +10,7 @@ $env.config.footer_mode = "never"
 $env.config.highlight_resolved_externals = true
 $env.config.shell_integration.osc8 = false
 
+alias ncplayer = ncplayer -qns scalehi
 alias ls = ls -a
 alias cp = cp -r
 alias rm = rm -r

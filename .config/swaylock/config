@@ -1,0 +1,4 @@
+ignore-empty-password
+no-unlock-indicator
+color=000000
+daemonize

@@ -10,9 +10,9 @@ wrap-around = false
 
 [editor]
 color-modes = true
-scrolloff = 0
 shell = ["nu", "-c"]
 gutters = ["diff", "diagnostics", "line-numbers", "spacer"]
+auto-format = false
 
 [editor.soft-wrap]
 wrap-indicator = ""

@@ -6,7 +6,5 @@
 	format = ssh
 [commit]
 	gpgsign = true
-[diff]
-	external = difft
 [init]
 	defaultBranch = main

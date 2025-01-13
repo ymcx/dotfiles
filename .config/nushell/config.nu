@@ -1,3 +1,7 @@
+let completer = {|spans|
+  carapace $spans.0 nushell ...$spans | from json
+}
+
 $env.config.use_kitty_protocol = true
 $env.config.show_banner = false
 $env.config.table.trim.methodology = "truncating"
@@ -8,10 +12,10 @@ $env.config.history.file_format = "sqlite"
 $env.config.history.isolation = true
 $env.config.footer_mode = "never"
 $env.config.highlight_resolved_externals = true
-$env.config.shell_integration.osc8 = false
+$env.config.completions.external.completer = $completer
 
-alias ncplayer = ncplayer -qns scalehi
-alias ls = ls -a
+alias diff = diff --color=always
+alias ls = ls -as
 alias cp = cp -r
 alias rm = rm -r
 

@@ -1,4 +1,4 @@
-theme = "adwaita-dark"
+theme = "nord"
 
 [editor.statusline]
 left = ["mode", "file-name", "file-modification-indicator"]

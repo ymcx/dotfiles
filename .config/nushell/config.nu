@@ -18,7 +18,3 @@ alias diff = diff --color=always
 alias ls = ls -as
 alias cp = cp -r
 alias rm = rm -r
-
-def --wrapped disown [...args] {
-  sh -c "$@ 1>/dev/null 2>/dev/null &" "" ...$args
-}

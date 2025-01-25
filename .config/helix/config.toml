@@ -1,15 +1,17 @@
 theme = "nord"
 
+[editor.cursor-shape]
+insert = "bar"
+
 [editor.statusline]
-left = ["mode", "file-name", "file-modification-indicator"]
+left = ["file-base-name", "file-modification-indicator"]
 center = ["diagnostics"]
-right = ["selections", "position"]
+right = ["position"]
 
 [editor.search]
 wrap-around = false
 
 [editor]
-color-modes = true
 shell = ["nu", "-c"]
 gutters = ["diff", "diagnostics", "line-numbers", "spacer"]
 auto-format = false

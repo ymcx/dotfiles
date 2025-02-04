@@ -8,3 +8,4 @@ theme = nord
 window-theme = ghostty
 cursor-style = bar
 adw-toolbar-style = raised-border
+clipboard-paste-protection = false

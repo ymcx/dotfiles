@@ -1,5 +1,5 @@
 [user]
-	name = Tino S
+	name = Tino
 	email = tino.s7@outlook.com
 	signingkey = /home/user/.ssh/github.pub
 [gpg]

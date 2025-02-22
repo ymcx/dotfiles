@@ -6,7 +6,7 @@ insert = "bar"
 [editor.statusline]
 left = ["file-base-name", "file-modification-indicator"]
 center = ["diagnostics"]
-right = ["position"]
+right = ["selections", "position"]
 
 [editor.search]
 wrap-around = false

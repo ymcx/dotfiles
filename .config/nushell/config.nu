@@ -1,3 +1,9 @@
+let completer = {|i|
+  fish -c $'complete -C "($i | str join " " | str replace (char dq) (char sq))"'
+  | from tsv --flexible --noheaders --no-infer --trim all
+  | rename value description
+}
+
 $env.config.use_kitty_protocol = true
 $env.config.show_banner = false
 $env.config.table.trim.methodology = "truncating"
@@ -6,7 +12,7 @@ $env.config.history.file_format = "sqlite"
 $env.config.history.isolation = true
 $env.config.footer_mode = "never"
 $env.config.highlight_resolved_externals = true
-$env.config.completions.external.completer = { |i| carapace $i.0 nushell ...$i | from json }
+$env.config.completions.external.completer = $completer
 
 alias diff = diff --color=always
 alias ls = ls -a

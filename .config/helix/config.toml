@@ -4,9 +4,7 @@ theme = "nord"
 insert = "bar"
 
 [editor.statusline]
-left = ["file-base-name", "file-modification-indicator"]
-center = ["diagnostics"]
-right = ["selections", "position"]
+left = ["mode", "file-name", "read-only-indicator", "file-modification-indicator"]
 
 [editor.search]
 wrap-around = false
@@ -14,10 +12,6 @@ wrap-around = false
 [editor]
 shell = ["nu", "-c"]
 gutters = ["diff", "diagnostics", "line-numbers", "spacer"]
-auto-format = false
-
-[editor.soft-wrap]
-wrap-indicator = ""
 
 [editor.auto-save]
 focus-lost = true

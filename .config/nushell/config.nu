@@ -1,5 +1,14 @@
+def --wrapped hx [...i] {
+  let scheme = (gsettings get org.gnome.desktop.interface color-scheme)
+  if $scheme == "'default'" {
+    ^hx -c ~/.config/helix/config-light.toml ...$i
+  } else {
+    ^hx ...$i
+  }
+}
+
 let completer = {|i|
-  fish -c $'complete -C "($i | str join " " | str replace (char dq) (char sq))"'
+  fish -c $'complete -C "($i | str join " " | str replace (char dq) \(char dq))"'
   | from tsv --flexible --noheaders --no-infer --trim all
   | rename value description
 }

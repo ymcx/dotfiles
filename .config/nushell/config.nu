@@ -1,16 +1,9 @@
-def --wrapped hx [...i] {
-  let scheme = (gsettings get org.gnome.desktop.interface color-scheme)
-  if $scheme == "'default'" {
-    ^hx -c ~/.config/helix/config-light.toml ...$i
-  } else {
-    ^hx ...$i
-  }
-}
-
-let completer = {|i|
-  fish -c $'complete -C "($i | str join " " | str replace (char dq) \(char dq))"'
-  | from tsv --flexible --noheaders --no-infer --trim all
-  | rename value description
+if (gsettings get org.gnome.desktop.interface color-scheme) == "'default'" {
+  source ~/.config/nushell/themes/nord-light.nu
+  'inherits = "nord_light"' | save -f ~/.config/helix/themes/nord.toml
+} else {
+  source ~/.config/nushell/themes/nord.nu
+  'inherits = "nord"' | save -f ~/.config/helix/themes/nord.toml
 }
 
 $env.config.use_kitty_protocol = true
@@ -21,7 +14,6 @@ $env.config.history.file_format = "sqlite"
 $env.config.history.isolation = true
 $env.config.footer_mode = "never"
 $env.config.highlight_resolved_externals = true
-$env.config.completions.external.completer = $completer
 
 alias diff = diff --color=always
 alias ls = ls -a

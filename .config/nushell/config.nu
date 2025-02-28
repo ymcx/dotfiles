@@ -1,9 +1,10 @@
-if (gsettings get org.gnome.desktop.interface color-scheme) == "'default'" {
-  source ~/.config/nushell/themes/nord-light.nu
-  'inherits = "nord_light"' | save -f ~/.config/helix/themes/nord.toml
-} else {
-  source ~/.config/nushell/themes/nord.nu
-  'inherits = "nord"' | save -f ~/.config/helix/themes/nord.toml
+def update-theme [] {
+  let theme = if (gsettings get org.gnome.desktop.interface color-scheme) == "'default'" {
+    "nord_light"
+  } else {
+    "nord"
+  }
+  $'inherits = "($theme)"' | save -f ~/.config/helix/themes/nord.toml
 }
 
 $env.config.use_kitty_protocol = true
@@ -18,3 +19,5 @@ alias diff = diff --color=always
 alias ls = ls -a
 alias cp = cp -r
 alias rm = rm -r
+
+update-theme

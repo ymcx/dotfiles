@@ -10,6 +10,7 @@ wrap-around = false
 color-modes = true
 shell = ["nu", "-c"]
 gutters = ["diff", "diagnostics", "line-numbers", "spacer"]
+auto-format = false
 
 [editor.auto-save]
 focus-lost = true

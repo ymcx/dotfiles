@@ -6,3 +6,4 @@ cursor-style-blink = false
 confirm-close-surface = false
 theme = light:nord-light,dark:nord
 window-theme = ghostty
+clipboard-paste-protection = false

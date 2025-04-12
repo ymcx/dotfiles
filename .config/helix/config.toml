@@ -1,9 +1,7 @@
 theme = "nord"
 
-[editor.statusline]
-left = ["mode", "file-name", "read-only-indicator", "file-modification-indicator"]
-
 [editor.search]
+smart-case = false
 wrap-around = false
 
 [editor]
@@ -11,6 +9,9 @@ color-modes = true
 shell = ["nu", "-c"]
 gutters = ["diff", "diagnostics", "line-numbers", "spacer"]
 auto-format = false
+line-number = "relative"
+continue-comments = false
+clipboard-provider = "termcode"
 
 [editor.auto-save]
 focus-lost = true

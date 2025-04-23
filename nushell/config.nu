@@ -6,6 +6,8 @@ $env.config.history.file_format = "sqlite"
 $env.config.history.isolation = true
 $env.config.footer_mode = "never"
 $env.config.highlight_resolved_externals = true
+$env.config.ls.clickable_links = false
+$env.PROMPT_COMMAND_RIGHT = ""
 
 alias ls = ls -a
 alias cp = cp -r

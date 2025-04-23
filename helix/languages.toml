@@ -1,0 +1,5 @@
+[[language]]
+name = "text"
+scope = "source.text"
+file-types = ["txt", "md"]
+soft-wrap.enable = true

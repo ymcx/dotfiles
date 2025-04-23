@@ -1,8 +1,0 @@
-[user]
-	name = ymcx
-	email = 89810988+ymcx@users.noreply.github.com
-	signingkey = ~/.ssh/github.pub
-[gpg]
-	format = ssh
-[commit]
-	gpgsign = true

@@ -1,0 +1,12 @@
+theme = "nord"
+
+[editor]
+shell = ["nu", "-c"]
+gutters = []
+auto-format = false
+continue-comments = false
+popup-border = "all"
+end-of-line-diagnostics = "warning"
+auto-save.focus-lost = true
+search.smart-case = false
+search.wrap-around = false

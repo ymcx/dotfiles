@@ -1,12 +1,13 @@
 theme = "nord"
 
-[editor]
-shell = ["nu", "-c"]
-gutters = []
-auto-format = false
-continue-comments = false
-popup-border = "all"
-end-of-line-diagnostics = "warning"
-auto-save.focus-lost = true
-search.smart-case = false
-search.wrap-around = false
+editor.shell = ["nu", "-c"]
+editor.gutters = []
+editor.auto-format = false
+editor.continue-comments = false
+editor.popup-border = "all"
+editor.inline-diagnostics.cursor-line = "warning"
+editor.inline-diagnostics.other-lines = "warning"
+editor.auto-save.focus-lost = true
+editor.completion-replace = true
+editor.search.smart-case = false
+editor.search.wrap-around = false

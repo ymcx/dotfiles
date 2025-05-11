@@ -1,5 +1,5 @@
 [language-server.redpen]
-command = "redpen"
+command = "redpen.py"
 
 [[language]]
 name = "text"

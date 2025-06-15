@@ -11,6 +11,7 @@ $env.config.ls.clickable_links = false
 $env.PROMPT_COMMAND_RIGHT = ""
 $env.EDITOR = "hx"
 $env.LS_COLORS = ""
+$env.ANDROID_HOME = "/home/user/.android/home"
 
 alias ls = ls -a
 alias cp = cp -r

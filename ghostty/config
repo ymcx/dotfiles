@@ -4,7 +4,6 @@ cursor-style-blink = false
 confirm-close-surface = false
 theme = OneHalfDark
 palette = 8=#5d677a
-adw-toolbar-style = flat
 window-theme = ghostty
 clipboard-paste-protection = false
 window-padding-color = extend

@@ -1,7 +1,3 @@
 [[language]]
 name = "markdown"
 soft-wrap.enable = true
-
-[[language]]
-name = "python"
-language-servers = ["pyright"]
